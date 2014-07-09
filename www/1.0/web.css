@@ -1,0 +1,400 @@
+html{
+   height: 100%;
+   text-align:center;
+}
+body{
+   margin: 0;
+   padding: 0;
+   height: 100%;
+}
+#one{
+height:100%;
+}
+#myform{     
+position: absolute;
+visibility:hidden;
+width: 97%;
+}
+#ctrl{
+  visibility:hidden;
+}
+#home {
+  visibility:visible;
+}
+#hfirst{
+  visibility:hidden;
+  display:none;
+}
+#ffirst{
+/*  position:absolute;
+  bottom:0;
+  top:auto;
+*/
+  left:0;
+  width:100%;
+  visibility:visible;
+  z-index:999;
+  overflow:hidden;
+}
+#first{
+/*height:90%;*/
+visibility:hidden;
+display:none;
+}
+#intro{
+  visibility:hidden;
+  position:absolute;
+  top:20%;
+}
+#qa{
+display:none;
+}
+#myradio{
+  width: 18.9em;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+}
+#multi-radio{
+  position: absolute;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto%;
+}
+#myflip{
+  visibility:hidden;
+}
+.ui-select{
+min-width:17em;
+max-width:17em;
+margin-left:-16%;
+margin-left:-16%;
+}
+#myinput{
+  position: absolute;
+  width: 50%;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: 25%;
+}
+#multi-text{
+  position: absolute;
+  width: 93%;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: -8px;
+}
+#leftcell{
+position: relative;
+left:20%;
+ width: 30%; 
+}
+#rightcell{
+position: relative;
+left:20%;
+width: 60%;
+}
+#myselect{
+  position: absolute;
+  width: 50%;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: 25%;
+}
+#multi-view{
+/*
+  position: absolute;
+  width: 50%;
+  margin-top: 5%;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: 25%;
+*/
+  position: absolute;
+  width: 400px;
+  margin-top: 5%;
+  margin-bottom: 0;
+  margin-left:auto;
+}
+#multi{
+  position:relative;
+  width:100%;
+}
+#question{
+margin-left:10%;
+margin-right:10%;
+white-space:normal;
+}
+#popupLogin a {
+text-decoration:none;
+color:black;
+}
+#select-view{
+position:absolute;
+margin-left:auto;
+}
+#Fullprogressbar{
+width:96%;
+}
+#Modprogressbar{
+width:96%;
+}
+#fullLabel{
+width:260px;
+}
+#modLabel{
+width:260px;
+}
+#Mod-bar{
+width:75%;
+}
+#Full-bar{
+width:75%;
+}
+a.ui-slider-handle.ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-up-b{
+display:none;
+}
+.boxed {
+	background-color:rgba(0,0,0,.7);
+}
+#popupBack{
+position:fixed;
+top:8%;
+}
+.buttonDisable {
+background:rgb(20,20,20) !important;
+}
+.textDisable {
+color:rgb(100,100,100) !important;
+}
+#topBars{
+position:relative;
+height:28px;
+}
+#botBars{
+position:relative;
+height:35px;
+}
+#footButtons{
+position:relative;
+height:50px;
+}
+#FAQcontent{
+}
+#popupFAQ{
+position:relative;
+bottom:280%;
+width:100%;
+min-width:85%;
+right:10%;
+}
+#closeFAQ{
+z-index:11111;
+}
+.ui-icon-closePopup {
+	background-image: url("../SHS_consent/closeIcon.png");
+}
+
+#radioLabel-a{
+height:80px;
+width:7.3em;
+}
+#radioLabel-b{
+height:80px;
+width:7.3em;
+left:3%;
+}
+#radio-text-a{
+position:relative;
+top:45%;
+font-size:2.9em;
+z-index:77777;
+}
+#radio-text-b{
+position:relative;
+top:45%;
+font-size:2.9em;
+z-index:77777;
+}
+#radio-text-a{
+height:350%;
+position:relative;
+top:10%;
+}
+#radio-text-b{
+height:350%;
+position:relative;
+top:10%;
+}
+SPAN#radio-text-a.ui-btn-text{
+position:relative;
+top:26%;
+}
+SPAN#radio-text-b.ui-btn-text{
+position:relative;
+top:26%;
+}
+#radioLabel-a > span:nth-child(1){
+height:88%;
+}
+#radioLabel-b > span:nth-child(1){
+height:88%;
+}
+#text-btn > span:nth-child(1) > span:nth-child(1){
+font-size:1.3em;
+}
+#time-choiceLabel-a > span:nth-child(1) > span:nth-child(1){
+position:relative;
+top:13%;
+font-size:2em;
+}
+#time-choiceLabel-a > span:nth-child(1){
+height:32px;
+}
+#time-choiceLabel-b > span:nth-child(1) > span:nth-child(1){
+position:relative;
+top:13%;
+font-size:2em;
+}
+#time-choiceLabel-b > span:nth-child(1){
+height:32px;
+}
+.selectClass{
+font-size:1.5em;
+}
+.cbClass{
+font-size:1.8em;
+}
+
+.radioClass{
+
+}
+.radioClassLabel{
+
+}
+.ui-radio-on > span:nth-child(1) > span:nth-child(1) > span:nth-child(1){
+height:90%;
+}
+.ui-radio-off > span:nth-child(1) > span:nth-child(1) > span:nth-child(1){
+height:90%;
+}
+#rightcell > div:nth-child(1) > fieldset:nth-child(1) > div:nth-child(1){
+width:10em;
+}
+input[type=checkbox]{
+							  position: absolute; 
+							overflow: hidden; 
+							clip: rect(0 0 0 0); 
+							height:1px; 
+							width:1px; 
+							margin:-1px; 
+							padding:0;
+							border:0;
+						}
+#map{
+position:fixed;
+display:none;
+width:100%;
+height:100%;
+left:0;
+top:0
+}
+#fMap{
+position:fixed;
+top:0;
+right:0;
+left:auto;
+width:23%;
+}
+#mapCont{
+position:fixed;
+right:0;
+}
+#FAQbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+}
+#FAQdiv{
+display:none;
+}
+#landing{
+display:inline;
+visibility:visible;
+overflow:hidden;
+}
+#mainPage2{
+width:7em
+}
+#mainPage3{
+width:7em
+}
+
+#landList{
+height:100%;
+overflow:hidden;
+}
+#FAQcontent{
+position:relative;
+top:70px;
+}
+.leaflet-popup-content{
+color:black;
+}
+/*
+#landList li {
+   height: 7em;
+}
+*/
+#Contact{
+display:none;
+}
+#contactText{
+position:relative;
+top:100px;
+}
+#landList li{
+height:25%;
+}
+.liDown{
+position:relative;
+}
+.boxed2{
+border-style:solid;
+border-width:1px;
+border-color:grey;
+}
+/*#landingSurvey{
+position:relative;
+top:50%;
+}
+#landingSurf{
+position:relative;
+top:50%;
+}
+#landingContact{
+position:relative;
+top:50%;
+}
+#landingFAQ{
+position:relative;
+top:50%;
+}
+*/
+#landingSurvey > h1:nth-child(1){
+position:relative;
+top:20%;
+}
+#landingFAQ > h1:nth-child(1){
+position:relative;
+top:22%;
+}
+#landingSurf > h1:nth-child(1){
+position:relative;
+top:24%;
+}
+#landingContact > h1:nth-child(1){
+position:relative;
+top:26%;
+}

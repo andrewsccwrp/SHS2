@@ -1,0 +1,50 @@
+div.ui-corner-top.ui-overlay-shadow.ui-bar-a.ui-header a { display:none;   }
+.ui-content, .ui-page{background: white;}
+#email { width:85%;max-width:600px; }
+#validate_btn { width:85%;max-width:600px; }
+#cvalidate { width:50%; margin: auto; margin-top: 50px; }
+#point { 
+	position: relative;
+	float: right;
+	width: 380px;
+	height: 380px;
+	margin-top: -100px;
+	margin-right: -3%;
+	background-image: url(/images/upload.png);
+	background-repeat:no-repeat;
+	visibility: hidden;
+	z-index: 2;
+	}
+#stage {
+	position: absolute;
+	width: 625px;
+	height: 625px;
+	margin-top: -5%;
+	margin-left: 27%;
+	background-image: url(/images/drag.png);
+	background-repeat:no-repeat;
+	z-index: 1;
+	}
+#destination {
+	visibility: hidden;
+	}
+#hbutton1 {
+	visibility: hidden;
+	}
+#hbutton2 {
+	margin-right: 6%;
+	visibility: visible;
+	}
+#hexchange h1 {
+	margin-left: 10%;
+	}
+.bar {
+    height: 18px;
+    background: #3e6b85;
+}
+#map{
+position:fixed;
+top:50%;
+left:50%;
+display:none;
+}

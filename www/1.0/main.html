@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+  <head>
+	<title>Surfer Health Survey</title>
+	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+	<link rel="stylesheet" href="css/web.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="css/jquery.mobile.structure-1.3.1.min.css" type="text/css" /> // -->
+        <!-- <link rel="stylesheet" href="css/SCCWRPMobile.min.css" type="text/css" /> // -->
+
+	<link rel="stylesheet" href="css/leaflet.css" type="text/css" />
+
+
+			<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/natived/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="css/natived/jquerymobile.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/natived/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/natived/jquerymobile.nativedroid.dark.css"/>
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/natived/jquerymobile.nativedroid.color.blue.css" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+<body>
+
+<div data-role="page" data-theme="b" id="one">
+ <div data-role="header" data-theme="b" id="hfirst">
+  <h1 id="question">Surfer Health Survey</h1>
+ </div>
+<div id="landing" data-theme="b">
+<ul id="landList" data-role="listview">
+		<li class="boxed2">  <img style="width:5.3em; position:fixed; top:6%; left:.9em" src="img/surveyIcon.png"> <a id='landingSurvey'><h1><center><span class="liDown"><br>Sign In/Enroll</span></center></h1></a></li>
+		<li class="boxed2">  <img style="width:5.3em; position:fixed; top:33%; left:.7em;" src="img/mapIcon.png">  <a id='landingSurf'><h1><center><span class="liDown"><br>Find a Surf Spot</span></center></h1></a></li>
+		<li class="boxed2">  <img style="width:5.3em; position:fixed; top:58%; left:.7em;" src="img/mailIcon.png"> <a id='landingContact'><h1><center><span class="liDown"><br>Contact Us</span></center></h1></a></li>
+		<li class="boxed2"> <img style="width:5.3em; position:fixed; top:84%; left:.7em;" src="img/faqIcon.png">  <a id='landingFAQ'><h1><center><span class="liDown"><br>FAQ</span></center></h1></a></li>
+</ul>
+</div>
+
+
+<div data-role="content" id="Contact">
+<div data-role="header" data-theme="b" id="FAQbar" class="ui-corner-top">
+                          <h1>Contact Info</h1> 
+			<form>
+			<a href="#" id="mainPage3" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+			</form>
+       </div>
+       <span id="contactText"><p>If you have any questions, comments, or concerns about this application feel free to email us at <br><br><a href="mailto:shs@sccwrp.org">shs@sccwrp.org</a></p>
+	<fieldset>
+	  <form>
+               <a href="#" id="submit_data" data-theme="b" data-role="button" class="topcoat-button">Submit Local Data</a>
+               <a href="#" id="submit_log" data-theme="b" data-role="button" class="topcoat-button">Diagnostic Log</a>
+               <a href="#" id="sd_write" data-theme="b" data-role="button" class="topcoat-button">Write to SD</a>
+               <a href="#" id="field_check" data-theme="b" data-role="button" class="topcoat-button">Field Computer Check</a>
+	  </form>
+	</fieldset>
+       <div id="diagnostic">
+	       <textarea id="diagnostic_log" style="color: black; background-color: white; height: 600px;">
+       		</textarea>
+               <a href="#" id="delete_log" data-theme="b" data-role="button" class="topcoat-button" disabled>Delete All Data</a>
+       </div>
+       <br>v-3.0<br>
+</span>
+</div>
+
+
+<div data-role="content" id=FAQdiv>
+       <div data-role="header" data-theme="b" id="FAQbar" class="ui-corner-top">
+                          <h1>FAQ</h1> 
+			<form>
+			<a href="#" id="mainPage2" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+			</form>
+       </div>
+<!--
+<div id="FAQcontent" data-role="collapsible-set">
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Why is the study <br>being done?</h4>
+    <p>
+    State, local and federal regulatory agencies are interested in determining if there are any links between marine water exposure during the winter, infectious illness, and beach water quality. They are also interested in finding ways to more quickly and accurately determine if there is a health risk to beachgoers due to pathogens in the water. State and local governments have made great strides to improve water quality during the summer months (April - October) when the majority of beachgoers enter the ocean. However, there remains uncertainty about whether ocean exposure during the winter months, when water quality may be worse, poses a public health risk.  This will be the first study to measure the health risks (if any) associated with surfing on the California coast. We hope that the information gained from the study will help inform watershed managers throughout San Diego and the rest of California to help guide investments in the management of storm water runoff.
+    </p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Who is doing the study?</h4>
+<p>
+The Surfer Health Study is being conducted by the Southern California Coastal Water Research Project (SCCWRP) and by the University of California at Berkeley (UCB) in partnership with the Surfrider Foundation.  The principal investigators are Steve Weisberg and Ken Schiff at SCCWRP and Jack Colford at the UC Berkeley School of Public Health.
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Who is funding <br>the study? </h4>
+<p>
+This study is being funded by the City and County of San Diego.
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Where and when will <br>this study take place?</h4>
+<p>
+The study will enroll surfers through in-person outreach at Ocean Beach and Tourmaline Surfing Park, and through web-based self-enrollment. The study will begin enrolling surfers in January 2014, and follow them with weekly surveys until May 2014.  Surfers enrolled in the study may surf at beaches other than Ocean Beach and Tourmaline during the study period, but the study will focus its water quality testing at these two sentinel beaches.
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Why were these areas <br>selected for this study?</h4>
+<p>
+San Diego County has some of the most heavily used beaches in the state of California during the winter months due in large part to its vibrant, year-round surfing community.  The study decided to focus its in-person recruitment and water quality testing at Ocean Beach and Tourmaline Surfing Park because they are located in San Diego County, they both attract a large, year-round surfing population, and they both have storm water discharges to the surf zone. 
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Is it safe to swim and <br>surf at these beaches?</h4>
+<p>
+The quality of all recreational waters is routinely monitored to ensure swimmer and surfer safety. If a problem with water quality does arise, the public will be notified by the County Health Department of the problem as soon as possible. Advisory warnings and beach closure announcements will be posted at locations where water does not meet current quality standards.
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>How will the <br>study be done?</h4>
+<p>
+The study will recruit and enroll surfers at Ocean Beach and Tourmaline Surfing Park beginning in January 2014, and will also enroll surfers through a web portal advertised by the Surfrider Foundation and others. At enrollment, participants will complete a short series of questions about recent ocean exposure and illness. They will then complete similar surveys each week through a secure website or through secure smartphone apps (iPhone and Android) developed by the study.
+</p>
+<p>
+During the study period, water samples will be collected at different places along the sentinel beaches (Ocean Beach and Tourmaline). These samples will be analyzed for a number of traditional and new water quality indicators.
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Will this research study <br>affect anyone's access <br>to the study beaches?</h4>
+<p>
+This research will have no effect on public access to any beach in this study.
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>How can the public <br>find out more about <br>the study?</h4>
+<p>
+To find out more about the study, you can contact our staff through our secure website at: <a href="http://www.sccwrp.org/shs">http://www.sccwrp.org/shs</a>.
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>How can the public find <br>out about the results?</h4>
+<p>
+The study will be completed in June 2014.  The formal results will be published in a scientific journal after the completion of the study. The Surfrider Foundation will communicate the results of the study to the public when the results are published.
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Where can community <br>residents find out more <br>about the quality of their <br>recreational waters?</h4>
+<p>
+For more information on the quality of recreational waters in San Diego County, go to the Heal the Bay website at <a href="http://www.healthebay.org/brc/">http://www.healthebay.org/brc/</a> or the San Diego County beach and bay monitoring program: <a href="http://www.sdcounty.ca.gov/deh/water/beach_bay.html">http://www.sdcounty.ca.gov/deh/water/beach_bay.html</a>
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>What will study <br>participants need to do</h4>
+<p>
+    If you are recruited at the beach:
+</p>
+<p>
+<ul>
+<li>We will ask you a couple of questions to see if you are eligible and willing to participate.
+<li>If you are eligible, we will collect some contact information.
+<li>When you leave the beach, we would like you to check in with one of our team members to answer a few short questions about your recent surf activity and illness. This should take about 10 minutes to complete.
+<li>Finally, each week during the study we will send you either a text (SMS) or email reminder to complete a weekly survey that will ask about recent ocean exposure and illness symptoms. You will complete the follow-up surveys either on our secure website or through a secure smartphone app (iPhone or Android) developed by the study. Each weekly survey will take about 10 minutes.
+</ul>
+</p>
+<p>
+    If you are enrolling online:
+</p>
+<p>
+<ul>
+	<li>You will complete a couple of eligibility questions, and review a consent form to see if you are eligible and willing to participate.
+	<li>If you are eligible, you will complete a short survey that should take 10-15 minutes.
+	<li>Finally, each week during the study we will send you either a text (SMS) or email reminder to complete a weekly survey that will ask about recent ocean exposure and illness symptoms. You will complete the follow-up surveys either on our secure website or through a secure smartphone app (iPhone or Android) developed by the study. Each weekly survey will take about 10 minutes.
+</ul>
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Will surfers be <br>compensated for <br>participating?</h4>
+<p>
+<ul>
+	<li>All surfers recruited on the beach will receive a bar of surf wax at the beach.</li>
+	<li>All participants who complete 12 consecutive weekly follow-up surveys will be entered into a drawing in June 2014 to receive either a discount on a one-year Surfline Premium &#169; subscription (if they aren't already subscribers) or a $50 giftcard redeemable at Swell.com. 200 participants will be randomly selected from those eligible to receive the prize in the drawing.</li>
+</ul>
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Will confidentiality <br>be protected?</h4>
+<p>
+<ul>
+	<li>All information collected from participants will be kept confidential to the greatest extent allowable by law.</li>
+	<li>Information given to us by participants will be identified by ID number only and your name will be deleted from our files when the study is complete.</li>
+	<li>If information from this study is published or presented at scientific meetings, your name and other personal information will not be used.</li>
+</ul>
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>What if I decide <br>I no longer want <br>to participate?</h4>
+    <p><ul><li>Your participation is voluntary and you may stop the interviews or follow-up at any time.</li>
+	    <li>You may refuse to answer any question you don't feel comfortable answering.</li>
+    </ul></p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>What are the risks and <br>benefits of this study?</h4>
+<p>
+    There are no direct benefits and no foreseeable risks from participating in this research. However, we hope that this study and others like it will help both the public, and state and local governments understand what health risks, if any, are associated with surfing in California.
+</p></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Who should I call if <br>I have any questions or <br>concerns about this <br>study?</h4>
+<p>
+If you or your family has any questions about the research, before or during the study, you may contact us through the study's website (<a href="http://www.sccwrp.org/shs">http://www.sccwrp.org/shs</a>) or toll-free number 855-351-8198. If you have any questions about your rights as a research subject, you may talk to the University of California, Berkeley, Committee for the Protection of Human Subjects at (510) 642-7461, or by email at <a href="mailto:subjects@berkeley.edu">subjects@berkeley.edu</a>. 
+</p></div>
+	</div>		
+
+</div>
+// -->
+
+<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all" data-change-hash="false">
+                          <div data-role="header" data-theme="b" class="ui-corner-top">
+				  <!-- <h1>If your already enrolled please sign in.</h1> // -->
+                          </div>
+                          <div data-role="content" data-theme="b" class="ui-corner-bottom ui-content">
+				<fieldset>
+				<form>
+					<h3>New to the study?</h3>
+                          <a href="#" id="enroll" data-theme="b" data-role="button" class="topcoat-button">Enroll</a>
+			  <h3>Already enrolled?</h3>
+<label for="login_input" class="ui-hidden-accessible">Email or Telephone</label>
+			  <div id="inputHolder">
+                          <input type="text" name="login_input" id="login_input" value="" placeholder="Email or Telephone" data-theme="b" />
+			  </div>
+                          <a href="#" id="login" data-theme="b" data-role="button" class="topcoat-button">Sign In</a>
+                          <!--<a href="#" id="mainPage2" data-theme="b" data-role="button" class="topcoat-button">Home</a> //-->
+				</form>
+				</fieldset>
+                          </div>
+          </div>
+
+
+
+<div data-role="content" id=mapdiv>
+<div id="map"></div>
+<div id="fMap">
+		<div id="mapCont" class="boxed">
+		<form>
+		<a href="#" data-role="button" data-theme='b' data-icon="home" data-inline=true id='mainPage'>Home</a>
+		<a href="#" data-role="button" data-theme='b' data-icon="refresh" data-inline=true id='resetView'>Reset</a>
+		</form>
+		</div>
+</div>
+</div>
+
+ <div data-role="content" id="first">
+	<div id="myform">
+		<div id="devicetype"></div>
+		<div id="qa">
+			<p id="number"></p>
+			<p id="module"></p>
+		</div>
+		<div id="consent"> 
+			<div id="formImages"></div>
+			<br>
+			<form>
+			<a href="SHS_consent/Consent.pdf" target="_blank" data-inline=true data-role="button" id="printConsent">Print/Download</a>
+	<!--<a href="#popupFAQ" name="FAQbutton" data-rel="popup" data-inline=true data-role="button">FAQ</a> //-->
+			</form>
+			<h3>Do you agree to the terms above?</h3>
+		</div>
+		<div data-role="fieldcontain" id="myradio">
+			<form>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+			<input type="radio" name="radio-view" id="radio-view-a" value="1"  />
+				<label for="radio-view-a" id=radioLabel-a>Yes</label>
+			<input type="radio" name="radio-view" id="radio-view-b" value="2"  />
+				<label for="radio-view-b" id=radioLabel-b>No</label>
+			</fieldset>
+			</form>
+		</div>
+		<div id="multi-radio" data-role='fieldcontain'></div>
+        	<div class="inner" id="myinput">
+		  <input type="text" class="topcoat-text-input--large" value="" placeholder="text" name='text-view' id='text-view'>
+                  <!-- <input type='tel' name='text-view' id='text-view' placeholder="999-999-9999"  pattern="\d{3}[-\s]\d{3}[-\s]\d{4}.*?$" /> // -->
+		  <form>
+		  <a href="#" data-role="button" id="text-btn">Validate</a>
+		  </form>
+        	</div>
+		  <!-- failing <select name="select-view" id="select-view" data-native-menu="false"> // -->
+        	<div id="myselect">
+		  <form>
+		  <center><select name="select-view" id="select-view"></select></center>
+		  </form>
+		</div>
+        	<div id="mylist">
+		  <form>
+		  <ul data-role="listview" id="list-view">
+		  </ul>
+		  </form>
+		</div>
+		<div data-role="fieldcontain" id="multi-view"></div>
+		<div id="multi-text"></div>
+		<div id="multi-select"></div>
+	</div> <!-- close myform // -->
+ 	<div id="status"></div>
+	<div class=ui-grid-d id="ctrl">
+                <!-- <button id="enroll" class="topcoat-button">Enrollment</button> // -->
+                <button id="history" class="topcoat-button">Surf History</button>
+                <button id="exposure" class="topcoat-button">Ocean Exposure</button>
+                <button id="symptoms" class="topcoat-button">Symptoms</button>
+                <button id="demographics" class="topcoat-button">Demographics</button>
+       	</div>
+	<div id="intro">
+	Welcome to the Surfer Health Study enrollment website.  The Surfer Health Study is a research project in San Diego County led by investigators at the Southern California Coastal Water Research Project (www.sccwrp.org), the School of Public Health at the University of California at Berkeley (www.sph.berkeley.edu), and the Surfrider Foundation (www.surfrider.org). The objective of the study is to determine whether surfers are at risk of illness from ocean exposure on the California coast.  The study will collect information about surf activity and illness over the next 3 months by having surfers report information each week through a website or smartphone app. If you are interested in participating, then please answer the following eligibility questions. If you are eligible, then you can read more details about the study, the benefits of participating, and then you can decide whether you are willing to participate. If you decide to participate, you will need to complete an enrollment survey that will require 15-20 minutes.
+		<br/>
+		<button data-role="button" id="start" class="topcoat-button">Tap to Start</button>
+	</div>
+	<!-- <a href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true">Form</a> // -->
+ 	<div data-role="footer" data-theme="b" id="ffirst">
+		<div id="progBars" class="boxed">
+		<form>
+		 <fieldset id="footButtons" class="ui-grid-b"><div id="back" class = "ui-block-a">
+		<a href="#" data-role="button" id="backButton"><div id='backButtonText'>Back</div></a>
+</div><div id="restartButton" class = "ui-block-b">
+	<a href="#popupDialog" data-rel="popup" data-role="button" id="saveRestartButton">Restart</a>
+</div><div id="forward" class = "ui-block-c">
+
+		<a href="#" data-role="button" class='buttonDisable' id="multi"><div id='multiButtonText' class="textDisable">Next</div></a>
+</div></fieldset>
+		</form>
+		 <fieldset id="topBars" class="ui-grid-a"><div id="modLabel" class = "ui-block-a"><p>Section (%):</p></div>
+		<div id="Mod-bar" class = "ui-block-b">
+		<input type="range" name="slider2" id="Modprogress-bar" value="0" min="0" max="100" data-highlight="true">
+		</div>
+		</fieldset>
+
+		 <fieldset id="botBars" class="ui-grid-a"><div id="fullLabel" class = "ui-block-a"><p>Total (%):</p></div>
+		<div id="Full-bar" class = "ui-block-b">
+		<input type="range" name="slider2" id="Fullprogress-bar" value="0" min="0" max="100" data-highlight="true">
+		</div>
+		</fieldset>
+	</div>
+  	<div>
+	<!--<a href="#popupDialog" data-rel="popup">Restart App</a> //-->
+
+  </div> <!-- close content // -->
+</div> <!-- close page // -->
+
+
+<div data-role="popup" id="popupOther" data-theme="a"  class="ui-corner-all">
+                          <div data-role="header" data-theme="b" class="ui-corner-top">
+                                  <h1>Enter a Value for Other</h1>
+                          </div>
+                          <div data-role="content" data-theme="b" class="ui-corner-bottom ui-content">
+				<fieldset>
+				<form>
+		  		  <input type="text" class="topcoat-text-input--large" value="text" placeholder="text" id='other'>
+                                  <a href="#" data-role="button" data-inline=true id="otherSubmit">Submit</a>
+				</form>
+				</fieldset>
+                          </div>
+</div>
+
+<div data-role="popup" id="popupDialog" data-theme="a"  class="ui-corner-all">
+                          <div data-role="header" data-theme="b" class="ui-corner-top">
+                                  <h1>Restart App?</h1>
+                          </div>
+                          <div data-role="content" data-theme="b" class="ui-corner-bottom ui-content">
+                                  <h3 class="ui-title">Are you sure you want to restart the App? <br> Your submission from this session will be saved.</h3>
+				<fieldset>
+				<form>
+                                  <a href="#" data-role="button" data-inline=true id="restartCancel">Cancel</a>
+                                  <a href="#" data-role="button" data-inline=true id="restart">Restart</a>
+				</form>
+				</fieldset>
+                          </div>
+</div>
+<div data-role="popup" id="popupHistory" data-theme="a"  class="ui-corner-all">
+                          <div data-role="header" data-theme="b" class="ui-corner-top">
+                                  <h1>Saved Sessions</h1>
+                          </div>
+                          <div data-role="content" data-theme="b" class="ui-corner-bottom ui-content">
+                                  <h3 class="ui-title">Please select a session below to edit:</h3>
+				<fieldset>
+				<form id="popupHistorySelect">
+                                  <a href="#" data-role="button" data-inline=true id="test1">12345</a>
+                                  <a href="#" data-role="button" data-inline=true id="test2">67899</a>
+				</form>
+				</fieldset>
+                          </div>
+</div>
+
+<div data-role="popup" id="popupAndroid" data-theme="a"  class="ui-corner-all">
+                          <div data-role="header" data-theme="b" class="ui-corner-top">
+                                  <h1>Native Android App</h1>
+                          </div>
+                          <div data-role="content" data-theme="b" class="ui-corner-bottom ui-content">
+                                  <p>We have an app for Android which is optimized for your device. Would you like to download the app?</p>
+				<fieldset>
+				<form>
+                                  <a href="#" data-role="button" data-inline=true id="androidCancel">Cancel</a>
+                                  <a href="https://build.phonegap.com/apps/568085/download/android" data-role="button" data-inline=true id="orestart">Download</a>
+				</form>
+				</fieldset>
+                          </div>
+</div>
+</div>
+<div data-role="dialog" data-theme="a" id="three">
+        <div data-role="header" data-theme="b">
+                <div id="backTitle"></div>
+        </div>
+        <div data-role="content" data-theme="b">
+                  <div data-role="fieldcontain">
+                        <div id="backheader"></div>
+                            <a href="#one" data-role="button" data-icon="back" id="fail">Back</a>
+                          </div>
+                </div>
+ </div> <!-- close content // -->
+ <!-- <script src="http://debug.phonegap.com/target/target-script-min.js#sccwrpdebug"></script> // -->
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/application.js"></script>
+<script src="js/jquery.mobile-1.3.1.min.js"></script> 
+<script src="js/leaflet-0.6.4/leaflet.js"></script> 
+<script type="text/javascript">
+	            var jqmCSS;
+        var deviceCSS;
+        var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
+        if((deviceType == "iPad" || deviceType == "iPhone")){
+            //jqmCSS = "css/jquery.mobile-1.2.0.min.css";
+            //deviceCSS = "css/ios-theme.css";
+            //deviceCSS = "css/topcoat/css/topcoat-mobile-light.css";
+            //jqmCSS = "css/jquery.mobile.structure-1.3.1.min.css";
+            //deviceCSS = "css/SCCWRPMobile.min.css";
+	    $('#Mod-bar').css('width','60%');
+	    $('#Full-bar').css('width','60%');
+	    $('#modLabel').css('width','110px');
+	    $('#fullLabel').css('width','110px');
+        } else if (deviceType == "Android"){
+            //jqmCSS = "css/jquery.mobile.structure-1.3.1.min.css";
+            //deviceCSS = "css/android-theme.css";
+	    $('#Mod-bar').css('width','60%');
+	    $('#Full-bar').css('width','60%');
+	    $('#modLabel').css('width','110px');
+	    $('#fullLabel').css('width','110px');
+        } else {
+            jqmCSS = "css/jquery.mobile.structure-1.3.1.min.css";
+            deviceCSS = "css/SCCWRPMobile.min.css";
+	    
+            //deviceCSS = "css/topcoat/css/topcoat-mobile-light.css";
+        }
+        //$(".cssJQM").attr("href", jqmCSS);
+        //$(".cssDevice").attr("href", deviceCSS);
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+[
+  {
+	"title": "Back",
+	"url": "action",
+      	"type": "button",
+      	"status": "incomplete",
+	"order": "a",
+	"icon": "signal",
+      	"id": "1"
+  },
+  {
+	"title": "Restart",
+	"url": "file",
+      	"type": "button",
+      	"status": "incomplete",
+	"order": "b",
+	"icon": "cloud",
+      	"id": "2"
+  },
+  {
+	"title": "Next",
+	"url": "sensor",
+      	"type": "button",
+      	"status": "incomplete",
+	"order": "c",
+	"icon": "flask",
+      	"id": "3"
+  }
+]

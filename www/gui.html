@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="ui-mobile-rendering">
+  <head>
+      <title>Sensor</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="http://demos.jquerymobile.com/1.4.2/css/themes/default/jquery.mobile-1.4.2.min.css"/>
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://demos.jquerymobile.com/1.4.2/js/jquery.mobile-1.4.2.min.js"></script> 
+    </head>
+  <body onload="init();" class="ui-mobile-viewport ui-overlay-b">
+    <div data-role="page" data-theme="b">
+	<div data-role="content" class="ui-content" role="main">
+
+<form>
+  <fieldset data-role="controlgroup" data-type="horizontal">
+    <div class="ui-radio">
+      <input name="radio-view" id="radio-view-a" value="1" type="radio">
+	<label for="radio-view-a" id="radioLabel-a">
+		<span class="ui-btn-inner"><span class="ui-btn-text" id="radio-text-a">Yes</span></span>
+	</label>
+    </div>
+    <div class="ui-radio">
+      <input name="radio-view" id="radio-view-b" value="2" type="radio">
+	<label for="radio-view-b" id="radioLabel-b">
+		<span class="ui-btn-inner"><span class="ui-btn-text" id="radio-text-b">No</span></span>
+	</label>
+    </div>
+  </fieldset>
+<!-- flipswitch
+<div data-role="fieldcontain">
+	<label for="flip-c">Flip switch:</label>
+	<select name="slider" id="flip-c" data-role="slider" data-theme="b">
+		<option value="no">No</option>
+		<option value="yes">Yes</option>
+	</select> 
+</div>
+// -->
+</form>
+<form>
+  <input value="" placeholder="999-999-9999" name="text-view" id="text-view" type="tel">
+  <a  href="#" data-role="button" id="text-btn">Validate</a>
+</form>
+<form>
+  <input value="" placeholder="user@example.com" name="text-view" id="text-view" type="email">
+  <a  href="#" data-role="button" id="text-btn">Submit Email</a>
+</form>
+<form>
+  <input value="" placeholder="99999" name="text-view" id="text-view" type="number">
+  <a  href="#" data-role="button" id="text-btn">Validate</a>
+</form>
+<form>
+  <input value="" name="text-view" id="text-view" type="number" pattern="[0-9]">
+  <a  href="#" data-role="button" id="text-btn">Years Surfed</a>
+</form>
+<form>
+  <fieldset data-role="controlgroup">
+	<div class="ui-checkbox">
+		<input name="cb0" id="cb0" value="Jan" type="checkbox">
+		<label data-theme="b" for="cb0">Jan</label>
+	</div>
+	<div class="ui-checkbox">
+		<input name="cb1" id="cb1" value="Feb" type="checkbox">
+		<label data-theme="b" for="cb1">Feb</label>
+	</div>
+  </fieldset>
+</form>
+<form>
+<div class="ui-field-contain">
+    <select name="select-native-1" id="select-native-1">
+        <option value="1">Select One</option>
+        <option value="2">Tourmaline</option>
+        <option value="3">Ocean Beach</option>
+    </select>
+</div>
+</form>
+	  <ul data-nativedroid-plugin="cards" class="nativeDroidCards">
+	    <li data-cards-type="weather">
+		<h1>Los Angeles</h1>
+		<ul class="detail">
+		  <li>Hot</li>
+		</ul>
+	    </li>
+	    <li data-cards-type="text">
+		<h1>Title</h1>
+		<ul class="detail">
+		  <li>Sub Text</li>
+		  <li><a href="#">Test Link</a></li>
+		</ul>
+	    </li>
+	  </ul>
+	  <div class="ui-controlgroup-controls">
+	    <div class="ui-checkbox">
+		<input type="checkbox" name="checkbox1a" id="checkbox-1ab">
+		<label for="checkbox-1ab"><span class="ui-btn-inner"><span class="ui-btn-text">Cheetos</span></span>	
+	    </div>
+	    <div class="ui-checkbox">
+		<input type="checkbox" name="checkbox1b" id="checkbox-1bb">
+		<label for="checkbox-1bb"><span class="ui-btn-inner"><span class="ui-btn-text">Doritos</span></span>	
+	    </div>
+	  </div> 
+	  <div data-role="fieldcontain">
+	    <ul>
+	      <li>
+		<label for="flip-1">Color</label>
+		<select name="flip-1" id="flip-1" data-role="flipswitch" data-theme="b">
+                            <option value="off">Off</option>
+                            <option value="on">On</option>
+                </select>
+	      </li>
+	      <li>	
+		<label for="flip-2">Temperature</label>
+		<select name="flip-2" id="flip-2" data-role="flipswitch" data-theme="b">
+                            <option value="off">Off</option>
+                            <option value="on">On</option>
+                </select>
+	      </li>
+
+	    </div>	
+	 <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="false" data-iconpos="right" data-theme="b" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-b">
+	  <div class="ui-btn-inner ui-li">
+	    <div class="ui-btn-text">
+		<a href="#" class="ui-link-inherit">
+		  <i class="icon-ok"></i>
+		  Accept	
+		</a>
+	    </div>
+	  </div>
+	 </li>
+	</div>
+	<li class="ui-li">
+  	  <fieldset class="ui-grid-a">
+          <div class="ui-block-a"><div data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="b" data-disabled="false" class="ui-submit ui-btn ui-shadow ui-btn-corner-all ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><button type="submit" data-theme="b" class="ui-btn-hidden" data-disabled="false">Cancel</button></div></div>
+          <div class="ui-block-b"><div data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="b" data-disabled="false" class="ui-submit ui-btn ui-shadow ui-btn-corner-all ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><button type="submit" data-theme="b" class="ui-btn-hidden" data-disabled="false">Submit</button></div></div>
+  	  </fieldset>
+	</li>
+	<div data-role="footer" style="overflow:hidden;">
+	  <h4 style="text-align:center;">footer</h4>
+	  <div data-role="navbar">
+	    <ul>
+		<li><a href="#">One</a></li>
+		<li><a href="#">Three</a></li>
+		<li><a href="#">Four</a></li>
+	    </ul>
+	  </div>
+	</div>
+    </div> <!-- close page // -->
+  </body>
+</html>

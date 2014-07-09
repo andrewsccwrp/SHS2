@@ -1,0 +1,93 @@
+<html>
+  <body>
+	<div id="header">
+	</div>
+	<div id="content">
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/underscore-min.js"></script>
+	<script src="js/backbone-min.js"></script>
+	<script src="js/json2.js"></script>
+	<script type="text/template" id="tpl-test-details">
+    	<div class="form-left-col"><h3><%= title %></h3>
+	</div>
+	</script>
+	<script type="text/template" id="tpl-receipt-details">
+    	<div class="form-left-col"><h3>Session Receipt:</h3>
+	  <ul>
+		<li>ID - <%= id %></li>
+		<li>q1 - <%= q1 %></li>
+		<li>q2 - <%= q2 %></li>
+		<li>q3 - <%= q3 %></li>
+		<li>q4 - <%= q4 %></li>
+		<li>q5 - <%= q5 %></li>
+		<li>q6 - <%= q6 %></li>
+		<li>q7 - <%= q7 %></li>
+		<li>q8 - <%= q8 %></li>
+		<li>q9 - <%= q9 %></li>
+		<li>q10 - <%= q10 %></li>
+		<li>q11 - <%= q11 %></li>
+	  </ul>
+          	<button id="finish" class="finish">Looks Good</button>
+	</div>
+	</script>
+	<script type="text/template" id="tpl-question-details">
+	  <% if((type) == "radio"){ %>
+    	    <div class="form-left-col"><h3>Radio Question - <%= qcount %> - <%= type %></h3>
+          	<label>Record ID:</label>
+          	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
+          	<label>Question ID:</label>
+          	<input type="text" id="qid" name="qid" value="<%= qcount %>" disabled />
+          	<label>Answer</label>
+	  	<input type="radio" id="aid" name="aid" value="Yes">Yes</input>
+	  	<input type="radio" id="aid" name="aid" value="No">No</input>
+          	<button id="save" class="save">Save</button>
+    	    </div>
+	  <% } else if ((type) == "multi"){  %>
+  	    <div class="form-left-col"><h3>Multi Question - <%= qcount %> - <%= type %></h3>
+	    <div data-role="fieldcontain">
+   	      <label for="select-choice-1" class="select">Choose shipping method:</label>
+    		<select name="aid" id="aid" multiple="multiple">
+        	  <option value="standard">Standard: 7 day</option>
+        	  <option value="rush">Rush: 3 days</option>
+        	  <option value="express">Express: next day</option>
+        	  <option value="overnight">Overnight</option>
+    		</select>
+        	<button id="save" class="save">Save</button>
+	    </div>
+	  <% } else if ((type) == "select"){  %>
+  	    <div class="form-left-col"><h3>Select Question - <%= qcount %> - <%= type %></h3>
+        	<label>Record ID:</label>
+		<fieldset class="ui-field-contain">
+    		  <select name="aid" id="aid">
+		    <label for="day"><%= id %></label>
+      			<option value="mon">Monday</option>
+      			<option value="tue">Tuesday</option>
+      			<option value="wed">Wednesday</option>
+    		  </select>
+        	<button id="save" class="save">Save</button>
+    	    </div>
+	  <% } else if ((type) == "text"){  %>
+  	    <div class="form-left-col"><h3>Text Question - <%= qcount %> - <%= type %></h3>
+        	<label>Record ID:</label>
+        	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
+        	<label>Question ID:</label>
+        	<input type="text" id="qid" name="qid" value="<%= qcount %>" disabled />
+        	<label>Answer</label>
+        	<input type="text" id="aid" name="aid" value="" required/>
+        	<button id="save" class="save">Save</button>
+    	    </div>
+	  <% } else if ((type) == "checkbox"){  %>
+          	<label>Record ID:</label>
+          	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
+          	<label>Question ID:</label>
+          	<input type="text" id="qid" name="qid" value="<%= qcount %>" disabled />
+          	<label>Answer</label>
+	  	<input type="checkbox" id="aid" name="aid" value="HB">HB</input>
+	  	<input type="checkbox" id="aid" name="aid" value="Ocean">Ocean</input>
+          	<button id="save" class="save">Save</button>
+	  <% } %>
+	</script>
+	<script src="js/application.js"></script>
+  </body>
+</html>

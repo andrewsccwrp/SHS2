@@ -22,7 +22,7 @@ var Answer = Backbone.Model.extend({
 });
 var Question = Backbone.Model.extend();
 var Receipt = Backbone.Model.extend({
-	url: '/shs2/index.php/question/:id',
+	url: 'http://data.sccwrp.org/shs2/index.php/question/:id',
 });
 //collection of models
 var QuestionList = Backbone.Collection.extend({
@@ -31,7 +31,7 @@ var QuestionList = Backbone.Collection.extend({
 });
 var AnswerList = Backbone.Collection.extend({
 	model: Answer,
-	url: '/shs2/index.php/surveys'
+	url: 'http://data.sccwrp.org/shs2/index.php/surveys'
 });
 var QuestionListView = Backbone.View.extend({
 	el: '#header',

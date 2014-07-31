@@ -1,2 +1,2 @@
-/Library/WebServer/Documents/shs/platforms/android/ant-build/AndroidManifest.xml : \
-/Library/WebServer/Documents/shs/platforms/android/AndroidManifest.xml \
+/Library/WebServer/Documents/shs2/platforms/android/ant-build/AndroidManifest.xml : \
+/Library/WebServer/Documents/shs2/platforms/android/AndroidManifest.xml \

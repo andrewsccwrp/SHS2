@@ -1,894 +1,583 @@
-/* interface */
-  var Action = Backbone.Model.extend();
-  var File = Backbone.Model.extend();
-  var Home = Backbone.Model.extend();
-  var Misc = Backbone.Model.extend();
-  var Sensor = Backbone.Model.extend();
-  var User = Backbone.Model.extend({
-	url:"/shs2/index.php/user",
-	defaults:{
-	  "id":null,
-	  "phone":"999-999-9999",
-	  "email":"john@doe.com"
-	}
-  });
-  var HomeList = Backbone.Collection.extend({
-	model: Home,
-    	url: 'menu.json'
-  });
-  var ActionList = Backbone.Collection.extend({
-	model: Action,
-    	url: 'questions.json',
-	//parse: function(data){
-	  //console.log("parse");
-	  //console.log(data);
-	//}
-  });
-  var FileList = Backbone.Collection.extend({
-	model: File,
-    	url: 'file.json',
-  });
-  var MiscList = Backbone.Collection.extend({
-	model: Misc,
-    	url: 'misc.json',
-  });
-  var SensorList = Backbone.Collection.extend({
-	model: Sensor,
-    	url: 'sensor.json',
-	//parse: function(data){
-	 // console.log("parse");
-	  //console.log(data);
-	//}
-  });
-  var HomeListView = Backbone.View.extend({
-	el: '#menu',
-    	template: _.template($('#menu-template').html()),
+//global
+var SESSIONID = +new Date;
+var connectionStatus = navigator.onLine ? 'online' : 'offline';
+//model
+var Answer = Backbone.Model.extend({
+	//url: '/shs2/index.php/surveys',
 	initialize: function(){
-		this.collection.on('add', this.addOne, this);
-		this.collection.on('reset', this.addOne, this);
+		this.on("invalid",function(model,error){
+			alert(error.phone);
+			alert(error.length);
+		});
 	},
-        events: {
-		'click .ui-btn' : 'showMenu'
+	defaults: {
+		'q1': 'null',
+		'q6': 'null'	
 	},
-        showMenu: function(e){
-		e.preventDefault();
-		//e.removeClass("ui-btn-active");
-		$('.ui-btn').removeClass($.mobile.activeBtnClass);
-                //alert($(event.target).attr('class'));
-                myparent = $(event.target).parent();
-		//console.log(e.currentTarget.child);
-                //alert(myparent.attr('class'));
-		//myparent.removeClass('ui-state-active');
-		var x  = e.currentTarget;
-		var id = $(e.currentTarget).data("id");
-		//alert("showMenu: "+id);
-		//alert(x.id);
-		$(".ui-btn").removeClass('ui-state-active ui-state-hover');
-		//var item = this.collection.get(id);
-		//var name = item.get("title");
-		//alert(name);
-		appRouter.navigate(id, true);
-		//$.mobile.changePage(id, { reverse: false, changeHash: false});
-		//alert(e.currentTarget);
-    	},
-    	addOne: function(c){
-		var homeListItemView = new HomeListItemView({model: c});
-		homeListItemView.render();
-	},
-        render: function(){
-		// clear blank li in main page before laying out menu
-		$(this.el).html("");	
-		this.collection.forEach(this.addOne, this);
+	validate: function (attrs){
+		var errors = this.errors = {};
+		if(!attrs.q6){ errors.phone = 'phone is required'; }
+		if(attrs.q6.length < 2){ errors.length = 'phone has minimum'; }
+		if(!_.isEmpty(errors)) return errors;
 	}
-  });
-  var ActionListView = Backbone.View.extend({
-	el: '#submenu',
-	initialize: function(){
-		this.collection.on('add', this.addOne, this);
-		this.collection.on('reset', this.addOne, this);
-	},
-    	addOne: function(c){
-		//alert("addOne"+c);
-		console.log("addOne"+c);
-		var actionListItemView = new ActionListItemView({model: c});
-		actionListItemView.render();
-	},
-        render: function(){
-		//alert("ActionListView"+ this.collection);
-		console.log("ActionListView"+ this.collection);
+});
+var Question = Backbone.Model.extend();
+var Receipt = Backbone.Model.extend();
+//collection of models
+var QuestionList = Backbone.Collection.extend({
+	model: Question,
+	url: 'questions.json'
+});
+var AnswerList = Backbone.Collection.extend({
+	model: Answer,
+	url: '/shs2/index.php/surveys'
+});
+var ReceiptList = Backbone.Collection.extend({
+	model: Receipt,
+	url: '/shs2/index.php/question/:id'
+});
+var QuestionListView = Backbone.View.extend({
+	el: '#header',
+	template:_.template($('#tpl-test-details').html()),
+	render: function(){
+		//console.log("QuestionListView");
 		$(this.el).html("");
-		$('#sensormenu').html("");
-		this.collection.forEach(this.addOne, this);
+		$(this.el).html(this.template(this.model.toJSON()));	
 	}
-  });
-  var SensorListView = Backbone.View.extend({
-	el: '#submenu',
+});
+var ReceiptView = Backbone.View.extend({
+	el: '#content',
+	template:_.template($('#tpl-receipt-details').html()),
 	initialize: function(){
-		this.collection.on('add', this.addOne, this);
-		this.collection.on('reset', this.addOne, this);
-	},
-    	addOne: function(c){
-		var sensorListItemView = new SensorListItemView({model: c});
-		sensorListItemView.render();
-	},
-        render: function(){
-		$(this.el).html("");
-		this.collection.forEach(this.addOne, this);
-	}
-  });
-  var HomeListItemView = Backbone.View.extend({
-	el: '#menu',
-    	template: _.template($('#menu-template').html()),
-	render: function(eventName){
-		$(this.el).append(this.template(this.model.toJSON()));
-		$(this.el).trigger("create");
-		return this;
-	}
-  });
-  var ActionListItemView = Backbone.View.extend({
-	el: '#submenu',
-    	template: _.template($('#action-template').html()),
-	initialize: function(){
-		$(this.el).unbind("click");
-	},
-        events: {
-		'click .ui-btn' : 'showAction'
-	},
-        showAction: function(e){
-		e.preventDefault();
-		var id = $(e.currentTarget).data("id");
-		//alert("showAction: "+id);
-		switch(id) {
-		  case "blueConnect":
-       			app.blueConnect();
-    		  break;
-		  case "blueClear":
-       			app.blueClear();
-    		  break;
-		  case "blueData":
-       			app.blueData();
-    		  break;
-		  case "clearContent":
-       			app.clearContent();
-    		  break;
-		  case "clearLocalData":
-       			app.clearLocalData();
-    		  break;
-		  case "fileCreate":
-       			app.fileCreate();
-    		  break;
-		  case "fileDirectoryListing":
-       			app.fileDirectoryListing();
-    		  break;
-		  case "getCamera":
-       			app.getCamera();
-    		  break;
-		  case "getGPS":
-       			app.getGPS();
-    		  break;
-		  case "nativeAlert":
-       			app.nativeAlert();
-    		  break;
-		  case "saveLocalData":
-       			app.saveLocalData();
-    		  break;
-		  case "sendSMS":
-       			app.sendSMS();
-    		  break;
-		  case "showLocalData":
-       			app.showLocalData();
-    		  break;
-		  case "submitLocalData":
-       			app.submitLocalData();
-    		  break;
-		  case "testData":
-       			app.testData();
-    		  break;
-		  case "uploadFile":
-       			app.uploadFile();
-		  break;
-		  case "blueClear":
-       			app.blueClear();
-    		  break;
-		  case "blueData":
-       			app.blueData();
-    		  break;
-		  case "clearContent":
-       			app.clearContent();
-    		  break;
-		  case "clearLocalData":
-       			app.clearLocalData();
-    		  break;
-		  case "fileCreate":
-       			app.fileCreate();
-    		  break;
-		  case "fileDirectoryListing":
-       			app.fileDirectoryListing();
-    		  break;
-		  case "getCamera":
-       			app.getCamera();
-    		  break;
-		  case "getGPS":
-       			app.getGPS();
-    		  break;
-		  case "nativeAlert":
-       			app.nativeAlert();
-    		  break;
-		  case "saveLocalData":
-       			app.saveLocalData();
-    		  break;
-		  case "sendSMS":
-       			app.sendSMS();
-    		  break;
-		  case "showLocalData":
-       			app.showLocalData();
-    		  break;
-		  case "submitLocalData":
-       			app.submitLocalData();
-    		  break;
-		  case "testData":
-       			app.testData();
-    		  break;
-		  case "uploadFile":
-       			app.uploadFile();
-    		  break;
-		}
-		//app["blueConnect"]();
-	},
-	render: function(eventName){
-		//alert("ActionListItemView");
-		$(this.el).append(this.template(this.model.toJSON()));
-		$('#submenu').trigger("create");
-		return this;
-	}
-  });
-  var SensorListItemView = Backbone.View.extend({
-	el: '#sensormenu',
-    	template: _.template($('#sensor-template').html()),
-	initialize: function(){
-		$(this.el).unbind("vclick");
-	},
-        events: {
-		'vclick .ui-btn-text' : 'showSensor'
-	},
-        showSensor: function(e){
-		e.preventDefault();
-		// old not used - $(event.target).attr('class') gets ui-flipswitch-off when clicking off
-		// old not used - $(e.target).data("id") / $(event.target).parent()
-		/* get id of button clicked - eg. Color */
-		var id = $(e.currentTarget).data("id");
-		/* get text of button clicked - eg. Color-off */
-		var idGet = ($("#"+id+"").text());
-		/* split button text */
-		splitID = idGet.split('-');
-		/* send text of button off to blueOnOff for further processing */ 
-		app.blueOnOff(idGet);
-		/* set text of button to opposite */
-		if(splitID[1] == "Off"){
-			($("#"+id+"").text(""+ splitID[0] +"-On"));
-		} else {
-			($("#"+id+"").text(""+ splitID[0] +"-Off"));
-		}
-		//alert(splitID[0]);
-		//alert(splitID[1]);
-	},
-	render: function(eventName){
-		$(this.el).append(this.template(this.model.toJSON()));
-		$('#sensormenu').trigger("create");
-		return this;
-	}
-  });
-  var UserView = Backbone.View.extend({
-	template:_.template($('#tpl-user-details').html()),
-	initialize:function(){
-		this.model.bind("change", this.render, this);
-	},
-	render:function(eventName){
-		$(this.el).html(this.template(this.model.toJSON()));
-		return this;
 	},
 	events:{
-		"change input":"change",
-		"click .save":"saveUser",
+		"click .finish":"finish"
+	},
+	finish: function(){
+       		appRouter.navigate('/', {trigger: true});
+	},
+	render: function(t){
+			console.log("ReceiptView render");
+			console.log(this.model.toJSON());
+			//console.log(this.model.get('qcount'));
+			$(this.el).html("");
+			//console.log(this.model.get('id'));
+			$(this.el).html(this.template(this.model.toJSON()));	
+			return this;
+	}
+});
+var AnswerListView = Backbone.View.extend({
+	el: '#content',
+	template:_.template($('#tpl-question-details').html()),
+	initialize: function(){
+		// must unbind event before each question or will end up with wrong model
+		$(this.el).unbind("click");
+		//this.model.on("change", this.change, this);
+		this.model.on('change', function(model){
+			console.log('change', model.toJSON());
+		});
+	},
+	events:{
+		//"change":"change",
+		"click .save":"saveAnswer"
 	},
 	change:function(event){
-		var target = event.target;
-		console.log("changing "+ target.id + ' from: ' + target.defaultValue +'"');
+		//console.log("changing "+ target.id + ' from: ' + target.defaultValue +'"');
+		console.log("change");
 	},
-	saveUser:function(){
-		console.log("saveUser");
-		//alert($('#phone').val());
-		this.model.set({
-			id:null,
-			phone:$('#phone').val(),
-			email:$('#email').val()
-		});
-		console.log(this.model.get("email"));
-		console.log(this.model.url);
-		this.model.save(null, { 
-		  success: function(model,response){
-			console.log("success");
-			this.close;
+	saveAnswer:function(event){
+		var timer = 0;
+		var appID;
+		var that = this;
+		//console.log("changing "+ target.id + ' from: ' + target.defaultValue +'"');
+		// current answer
+		//console.log(this.model.get("qcount"));
+		var currentAnswer = $('#aid').val();
+		//console.log("currentAnswer: "+ currentAnswer);
+		// current question
+		// too slow
+		//var currentQuestion = Number(this.model.get("qcount")); 
+		//console.log("currentQuestion: "+ currentQuestion);
+		appID = Number(this.model.get("id")); 
+		//console.log("appID: "+ appID);
+		var currentQuestion = (Number($('#qid').val()));
+		// next question  
+		var nextQuestion = (currentQuestion + 1);
+		switch(currentQuestion){
+		  case 1:
+			//answerDetails = { q1: currentAnswer, qcount: nextQuestion};
+			answerDetails = { q1: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 2:
+			answerDetails = { q2: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 3:
+			answerDetails = { q3: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 4:
+			answerDetails = { q4: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 5:
+			answerDetails = { q5: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 6:
+			var currentPhone = currentAnswer.replace(/-/g, '');
+			answerDetails = { q6: currentPhone, qcount: nextQuestion};
+		  	break;	
+		  case 7:
+			if(currentAnswer == "phone"){
+				//var currentPhone = this.model.get("q6"); 
+				//var mmsEmail = app.lookup(currentPhone);
+				//alert(mmsEmail);
+				// if phone - skip email go to 10
+				answerDetails = { q7: currentAnswer, qcount: (nextQuestion + 2)};
+			} else if (currentAnswer == "email"){
+				answerDetails = { q7: currentAnswer, qcount: nextQuestion};
+			} else {
+				alert("something went wrong - neither email or phone");
+			}
+		  	break;	
+		  case 8:
+			answerDetails = { q8: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 9:
+			answerDetails = { q9: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 10:
+			answerDetails = { q10: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 11:
+			answerDetails = { q11: currentAnswer, qcount: nextQuestion};
+			// timer = 1; end of module1 set to save
+		  	break;	
+		  case 12:
+			answerDetails = { q12: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 13:
+			answerDetails = { q13: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 14:
+			answerDetails = { q14: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 15:
+			answerDetails = { q15: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 16:
+			answerDetails = { q16: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 17:
+			answerDetails = { q17: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 18:
+			answerDetails = { q18: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 19:
+			answerDetails = { q19: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 20:
+			answerDetails = { q20: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 21:
+			answerDetails = { q21: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 22:
+			answerDetails = { q22: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 23:
+			answerDetails = { q23: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 24:
+			answerDetails = { q24: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 25:
+			answerDetails = { q25: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 26:
+			answerDetails = { q26: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 27:
+			answerDetails = { q27: currentAnswer, qcount: nextQuestion};
+			//timer = 2;
+		  	break;	
+		  case 28:
+			answerDetails = { q28: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 29:
+			answerDetails = { q29: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 30:
+			answerDetails = { q30: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 31:
+			answerDetails = { q31: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 32:
+			answerDetails = { q32: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 33:
+			answerDetails = { q33: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 34:
+			answerDetails = { q34: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 35:
+			answerDetails = { q35: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 36:
+			answerDetails = { q36: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 37:
+			answerDetails = { q37: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 38:
+			answerDetails = { q38: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 39:
+			answerDetails = { q39: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 40:
+			answerDetails = { q40: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 41:
+			answerDetails = { q41: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 42:
+			answerDetails = { q42: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 43:
+			answerDetails = { q43: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 44:
+			answerDetails = { q44: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 45:
+			answerDetails = { q45: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 46:
+			answerDetails = { q46: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 47:
+			answerDetails = { q47: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 48:
+			answerDetails = { q48: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 49:
+			answerDetails = { q49: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 50:
+			answerDetails = { q50: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 51:
+			answerDetails = { q51: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 52:
+			answerDetails = { q52: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 53:
+			answerDetails = { q53: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 54:
+			answerDetails = { q54: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 55:
+			answerDetails = { q55: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 56:
+			answerDetails = { q56: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 57:
+			answerDetails = { q57: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 58:
+			answerDetails = { q58: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 59:
+			answerDetails = { q59: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 60:
+			answerDetails = { q60: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 61:
+			answerDetails = { q61: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 62:
+			answerDetails = { q62: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 63:
+			answerDetails = { q63: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 64:
+			answerDetails = { q64: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 65:
+			answerDetails = { q65: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 66:
+			answerDetails = { q66: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 67:
+			answerDetails = { q67: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 68:
+			answerDetails = { q68: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 69:
+			answerDetails = { q69: currentAnswer, qcount: nextQuestion};
+		  	break;	
+		  case 70:
+			answerDetails = { q70: currentAnswer, qcount: nextQuestion};
+			timer = 4;
+		  	break;	
+		}	
+		// either set or save here
+		//this.model.save({q1: "test"}, { 
+		//this.model.set(answerDetails, {validate:true});
+		//if(timer != 0){ use this code if you want break up modules and then save
+			//window.localStorage.clear();
+			console.log(this.model.toJSON());
+			// dump saved answers to json string 
+			var parsedJSON = JSON.stringify(this.model.toJSON());
+			// need a new column called status in db
+			//  are we online or offline 
+			// we are offline
+		  if (connectionStatus != 'online'){
+			// create unique key for web session 
+	    		var sessionKey = "key-" + SESSIONID + "-" + timer;
+			// are there any other keys on the key chain 
+	    		var keyStorage = window.localStorage.getItem("key-chain");
+	    		if (keyStorage != null){
+				alert("The following sessions are saved " + keyStorage);
+				// yes other keys add new key to key chain 
+				keyStorage = ""+ keyStorage +","+ sessionKey +"";
+	    		} else {
+				// no first key on key chain 
+				var keyStorage = ""+ sessionKey +"";
+	    		}	
+			// save key chain to local database 
+			window.localStorage.setItem("key-chain", keyStorage);
+			// save new key to local database 
+			window.localStorage.setItem(""+ sessionKey +"", parsedJSON);
+    			var currentStorage = window.localStorage.getItem("key-chain");
+    			alert("Test pull on : "+ currentStorage);	
+		  } else {
+			// we are online 
+			//this.model.save({qcount: currentQuestion},{ used when useing set and mulitiple save
+			//console.log(this.model.toJSON());
+			this.model.save(answerDetails, {
+			  wait: true,
+	  		  success: function(model,response){
+				console.log("success");
+				//console.log(response);
+				//console.log(model.toJSON());
+				//console.log(model.get("id"));
+				//appID = Number(this.model.get("id")); 
+				// if module1 - then notify user 
+				// ****** notify user - working code ********** //
+				//var currentEmail = model.get("q8");
+				//app.notify(currentEmail);
+				// ******************************************** // 
+				// return receipt from database
+				//app.receipt();
+				that.getQuestion(that,nextQuestion);
+	  		  },
+	  		  error: function(model,response){
+				console.log("failed");
+				console.log(response.responseText);
+				console.log(response.status);
+				console.log(response.statusText);
+	  		  }
+			});
+		  } // close else
+		//} // timer if - remove to enable module save
+		// last module - go to receipt
+		if(timer == 4){
+				// return receipt from database
+				//app.receipt();
+       				appRouter.navigate('shs2/receipt/' + appID, {trigger: true});
+		}
+		//this.getQuestion(nextQuestion);
+		// call lookup after database save
+		//app.lookup();
+		// set/save telephone/email fields to database
+		// when finished with all questions check users record in database and present to viewer
+		// then send user an email notification welcoming them to the study
+		//app.receipt();
+		//app.notify();
+       		//appRouter.navigate('shs2/question/' + appID + '/' + nextQuestion, {trigger: true});
+		/* set timer back to 0 */
+		//timer = 0;
+	},
+	getQuestion: function(t,nq){
+		//console.log("getQuestion");
+		//console.log(t.model.get("id"));
+		var questionList = new QuestionList();
+		questionList.fetch({
+		  success: function(response){
+			question = questionList.get(nq);
+			var type = question.attributes.type;
+			questionListView = new QuestionListView({model: question});
+			questionListView.render();
+			//check.render(question.attributes.type);
+			t.render(type);
 		  },
-		  error: function(model,response){
-			console.log("failed");
-			console.log(response.responseText);
-			console.log(response.status);
-			console.log(response.statusText);
+		  error: function(response){
+			console.log("questionList Failed");
 		  }
 		});
-		return false;	
 	},
-	close:function(){
-		$(this.el).unbind();
-		$(this.el).empty();
-	},
-  });
-
-  var appRouter = new (Backbone.Router.extend({
-  navigate: function (url){
-	// override pushstate and load url
-	Backbone.history.loadUrl(url);
-  },
+	render: function(form_type){
+			//console.log("AnswerListView render");
+			//console.log(this.model.toJSON());
+			//console.log(this.model.get('qcount'));
+			$(this.el).html("");
+			//console.log(this.model.get('id'));
+			this.model.set({"type":form_type});
+			//console.log(this.model.toJSON());
+			$(this.el).html(this.template(this.model.toJSON()));	
+			return this;
+	}
+});
+	
+var appRouter = new (Backbone.Router.extend({
   routes: {
-	"/q:number": "question",
-	"action": "action",
-	"file": "file",
-	"misc": "misc",
-	"sensor": "sensor"
+	"shs2/question/:appid/:nq": "ask",
+	"shs2/receipt/:appid": "receipt",
+	"": "start"
   },
-  question: function(question){
-	this.question.fetch({data: {number: number}});
+  /*
+  ask: function(appid,nq){
+	//console.log("AppID:" + appid);
+	//console.log("Next Answer:" + nq);
+	var answerList = new AnswerList();
+	answerList.fetch({
+		success: function(response){
+			var answer = answerList.get(appid);
+			answerListView = new AnswerListView({model: answer});
+			answerListView.render();
+		},
+		error: function(response){
+			console.log("error");
+		}
+	});
   },
-  action: function(){
-	//alert("action");
-	this.actionList = new ActionList();
-	this.actionListView = new ActionListView({collection: this.actionList});
-	this.actionListView.render();
-	this.actionList.fetch();
-  },
-  file: function(){
-	//alert("file");
-	this.fileList = new FileList();
-	this.fileListView = new ActionListView({collection: this.fileList});
-	this.fileListView.render();
-	this.fileList.fetch();
-  },
-  misc: function(){
-	//alert("misc");
-	this.miscList = new MiscList();
-	this.miscListView = new ActionListView({collection: this.miscList});
-	this.miscListView.render();
-	this.miscList.fetch();
-  },
-  sensor: function(){
-	//alert("sensor");
-	this.sensorList = new SensorList();
-	this.sensorListView = new SensorListView({collection: this.sensorList});
-	this.sensorListView.render();
-	this.sensorList.fetch();
+  */
+  receipt: function(appid){
+	console.log("Receipt ID:" + appid);
+	//console.log("Next Answer:" + nq);
+	var receiptList = new AnswerList();
+	receiptList.fetch({
+		success: function(response){
+			var record = receiptList.get(appid);
+			receiptView = new ReceiptView({model: record});
+			console.log("receiptView: "+record);
+			//receiptView.render();
+		},
+		error: function(response){
+			console.log("error");
+				console.log(response.responseText);
+				console.log(response.status);
+				console.log(response.statusText);
+		}
+	});
   },
   start: function(){
-	//alert("start");
-	this.homeList = new HomeList();
-	this.homeListView = new HomeListView({collection: this.homeList});
-	this.homeListView.render();
-	this.homeList.fetch();
-	this.user = new User();
-	this.userView = new UserView({model: this.user});
-	$('#content').html(this.userView.render().el);
+	console.log("start");
+	// create initial record in database - set timestamp
+	var answerList = new AnswerList();
+	answerList.create({qcount: 1, timestamp: SESSIONID}, {
+	  wait: true,
+	  success: function(model,response){
+		console.log("start - success");
+		//console.log(response);
+		answer = answerList.get(response.id);
+		answerListView = new AnswerListView({model: answer});
+		answerListView.render("radio");
+		//this.close;
+	  },
+ 		error: function(model,response){
+		console.log("failed");
+		console.log(response.responseText);
+		console.log(response.status);
+		console.log(response.statusText);
+	  }
+	});
+	/*
+	var questionList = new QuestionList();
+	questionList.fetch({
+		success: function(response){
+			question = questionList.get('1');
+			questionListView = new QuestionListView({model: question});
+			questionListView.render();
+
+		},
+		error: function(response){
+
+		}
+	});
+	*/
   }
-  }));
-
-var fileSystem;
+}));
 var app = {
-    macAddress: "98:76:B6:00:15:ED",  // get your mac address from bluetoothSerial.list
-    chars: "",
-    position: "",
-    SESSIONID: +new Date,
-
-/* device functions */
-  getId: function(id) {
-    return document.querySelector(id);
-  },
-  bindEvents: function(){
-    //app.getId("#blueConnect").addEventListener("touchstart",app.blueConnect);         
-    //app.getId("#blueData").addEventListener("touchstart",app.blueData);         
-    //app.getId("#clearDataButton").addEventListener("click",app.clearLocalData);         
-    //app.getId("#fileCreateButton").addEventListener("touchstart",app.fileCreate);            
-    //app.getId("#fileDirButton").addEventListener("touchstart",app.fileDirectoryListing);            
-    //app.getId("#clearContentButton").addEventListener("touchstart",app.clearContent);            
-    //app.getId("#getGPSButton").addEventListener("click",app.getGPS);            
-    //app.getId("#getCameraButton").addEventListener("touchstart",app.getCamera);            
-    //app.getId("#nativeAlertButton").addEventListener("click",app.nativeAlert);            
-    //app.getId("#saveDataButton").addEventListener("click",app.saveLocalData);            
-    //app.getId("#sendSMSButton").addEventListener("click",app.sendSMS);            
-    //app.getId("#showDataButton").addEventListener("click",app.showLocalData);            
-    //app.getId("#submitDataButton").addEventListener("click",app.submitLocalData);            
-    //app.getId("#testDataButton").addEventListener("click",app.testData);            
-    //app.getId("#fileUploadButton").addEventListener("click",app.uploadFile);            
-    //app.getGPS(); -- move to deviceREady
-  },
-  clearContent: function() {
-    app.getId("#content").innerHTML = "";
-  },
-  showContent: function(s) {
-    app.getId("#content").innerHTML += s;
-  },
-
-/* start bluetooth functions */
-  blueConnect: function() {
-	alert("blueConnect");
-        var connect = function () {
-	    alert(app.macAddress);
-            app.showContent("Attempting to connect. " +
-             "Make sure the serial port is open on the target device.");
-            //bluetoothSerial.connect(
-            bluetoothSerial.connectInsecure(
-                app.macAddress,  // device to connect to
-                app.openPort,    // start listening if you succeed
-                app.showError    // show the error if you fail
-            );
-        };
-        var disconnect = function () {
-            app.showContent("attempting to disconnect");
-            bluetoothSerial.disconnect(
-                app.closePort,     // stop listening to the port
-                app.showError      // show the error if you fail
-            );
-        };
-        // here's the real action of the manageConnection function:
-        bluetoothSerial.isConnected(disconnect, connect);
-  },
-  openPort: function(){
-        blueConnect.innerHTML = "Disconnect";
-	var dataString;
-	var jsonString;
-        bluetoothSerial.subscribe('|', function (data) {
-	  //var res = data.charAt(0);
-	  //if res is empty remove first and last characters
-	  //if(!res || 0 === res.length){
-		//jsonString = data.substring(1, data.length-1);		
-	  //} 
-	  //if(data !== "Initializing SD card...Initializing SD card...initialization done."){
-	  //var dataType = typeof(data);
-	  alert("Data: "+data);
-	    jsonString = data.replace(/\|/g, '');
-	  //alert("jsonString: "+jsonString);
-	    //var app.SESSIONID = +new Date;
-	    // remove | pipe ending
-	    //var jsonString = '{"result":true,"count":1}';
-	    //var jsonString = eval("(function(){return " + dataString + ";})()");
-	    //alert(jsonString.id);
-	    //alert(jsonString.ec);
-	    //alert("Before JSON: "+ dataString);
-            //app.showContent(jsonString);
-	    //alert(jsonString.id);
-	    // key structure - key ring [sessionid1],[sessionid2],[sessionid3]
-	    // points to stored data location [sessionid1][data to store]
-	    // add another session to the key ring
-	    //var randomNumber = Math.floor(Math.random()*100);
-	    // parse data string into json format
-	    var parsedJSON = JSON.parse(jsonString); 
-	    //alert("JSON: "+parsedJSON.id);	
-	    // save session key to key ring
-	    var sessionKey = "sensor-keys-" + app.SESSIONID + "-" + parsedJSON.id;
-	    alert(sessionKey);
-	    var keyStorage = window.localStorage.getItem("sensor-keys");
-	    if (keyStorage != null){
-			//alert("The following sessions are saved " + keyStorage);
-			keyStorage = ""+ keyStorage +","+ sessionKey +"";
-	    } else {
-			var keyStorage = "sensor-keys-"+ sessionKey +"";
-	    }	
-	    window.localStorage.setItem("sensor-keys", keyStorage);
-	    // add data to session key
-	    window.localStorage.setItem(""+ sessionKey +"" , jsonString);
-    	    var currentStorage = window.localStorage.getItem(""+ sessionKey +"");
-    	    alert("currentStorage: "+ currentStorage);
-        }, app.showError);
-  },
-  closePort: function(){
-        app.showContent("Disconnected from: " + app.macAddress);
-        blueConnect.innerHTML = "Connect";
-        bluetoothSerial.unsubscribe(
-                function (data) {
-                    app.showContent(data);
-                },
-                app.showError
-        );
-  },
-  blueClear: function() {
-	    alert("Clear Arduino");
-	    var text = "z\r";
-	    bluetoothSerial.write(text, function(){ alert("Clear Arduino Succeeded"); }, function(){ alert("Clear Arduino Failed"); });
-  },
-  blueData: function() {
-	    alert("getData Initiated");
-	    var text = "g\r";
-	    bluetoothSerial.write(text, function(){ alert("getData Succeeded"); }, function(){ alert("getData Failed"); });
-  },
-  blueOnOff: function(e){
-        switch(e) {
-          case "Color-Off":
-	      var text = "b\r";
-	  break;
-	  case "Color-On":
-	      var text = "c\r";
-	  break;
-          case "DO-Off":
-	      var text = "5\r";
-	  break;
-	  case "DO-On":
-	      var text = "6\r";
-	  break;
-          case "EC-Off":
-	      var text = "1\r";
-	  break;
-	  case "EC-On":
-	      var text = "2\r";
-	  break;
-          case "PH-Off":
-	      var text = "7\r";
-	  break;
-	  case "PH-On":
-	      var text = "8\r";
-	  break;
-          case "ORP-Off":
-	      var text = "3\r";
-	  break;
-	  case "ORP-On":
-	      var text = "4\r";
-	  break;
-          case "Temperature-Off":
-	      var text = "9\r";
-	  break;
-	  case "Temperature-On":
-	      var text = "a\r";
-	  break;
-          case "All-Off":
-	      var text = "d\r";
-	  break;
-	  case "All-On":
-	      var text = "e\r";
-	  break;
-	}
-   	bluetoothSerial.write(text, function(){ alert("Success Command: "+text); }, function(){ alert("Failed Command: "+text); });
-  },
-  showError: function(error) {
-        app.showContent(error);
-  },
-/* end bluetooth functions */
-
-/* start file storage functions */
-  gotFiles: function(entries) { 
-    alert("gotFiles");
-    var s = "";
-    for(var i=0,len=entries.length; i<len; i++) {
-	s+= entries[i].fullPath;
-	if (entries[i].isFile) {
-	  s += " [F]";
-	} else {
-	  s += " [D]";
-	}
-	s += "<br/>";
-    }
-    s+="<p/>";
-    app.showContent(s);
-  },
-  fileDirectoryListing: function(e) {
-    alert("fileDirectoryListing");
-    //get a directory reader from our FS
-    var dirReader = fileSystem.root.createReader();
-    dirReader.readEntries(app.gotFiles,app.onError);        
-  },
-  onFSSuccess: function(fs) {
-    //alert("onFSSuccess");
-    fileSystem = fs; 
-    return fileSystem;
-    //app.fileDirectoryListing();
-  },
-  // file writing f=file,s=string
-  fileAppend: function(f) {
-    alert("fileAppend");
-    alert(f.fullPath);
-    f.createWriter(function(writerOb) {
-        writerOb.onwrite=function() {
-            app.showContent("Done writing to file.<p/>");
-        }
-        //go to the end of the file...
-        writerOb.seek(writerOb.length);
-        //writerOb.write("Test at "+new Date().toString() + "\n");
-	var localSave = app.getLocalData("local","save");
-        writerOb.write(localSave);
-	alert("successfully wrote");
-    })
-  },
-  fileCreate: function(e) {
-    alert("fileCreate");
-    alert(fileSystem);
-    fileSystem.root.getFile("test.txt", {create:true}, app.fileAppend, app.onError);
-  },
-  uploadFile: function(e) {
-    alert("uploadFile to SCCWRP");
-    //var fileURL = "cdvfile://localhost/test.txt";
-    var fileURL = "file:///storage/sdcard0/test.txt";
-    function win(r){
-	    //alert(r);
-            alert("Code = " + r.responseCode);
-            alert("Response = " + r.response);
-            alert("Sent = " + r.bytesSent);
-    }
-    function fail(error){
-    	alert("An error has occurred: Code = " + error.code);
-    	alert("upload error source " + error.source);
-    	alert("upload error target " + error.target);
-    }
-
-    var uri = encodeURI("http://data.sccwrp.org/sensor/upload.php");
-
-    var options = new FileUploadOptions();
-    options.fileKey = "file";
-    options.fileName = fileURL.substr(fileURL.lastIndexOf('/')+1);
-    options.mimeType = "text/plain";
-    
-    var headers={'headerParam':'headerValue'};
-    options.headers = headers;
-
-    var ft = new FileTransfer();
-    ft.onprogress = function(progressEvent){
-	if(progressEvent.lengthComputable){
-	  loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
-	} else {
-	  loadingStatus.increment();
-	}
-    }
-    ft.upload(fileURL, uri, win, fail, options);
-  },
-/* end file storage */
-
-/* start local storage */
-  dataSyncCheck: function(da,dc,dt){
-	// send autoid and captureid to see if record is in remote database
-	//alert("dataSyncCheck autoid: "+ da);
-	//alert("dataSyncCheck captureid: "+ dc);
-	//alert("dataSyncCheck timestamp: "+ dt);
-	// if the record is in database remove local record
-	alert("dataSyncCheck");
-        var url = 'http://data.sccwrp.org/sensor/check.php';
-        message = $.ajax({
-                type: 'GET',
-                url: url,
-                contentType: "application/json",
-                dataType: 'jsonp',
-                data: {aa: da,cc: dc,tt: dt},
-                crossDomain: true,
-                timeout: 4000,
-                error: function(x,t,m){
-                         if(t==="timeout"){ alert("dataSyncCheck not Submitted"); }
-                },
-                success: function(data) {
-			// first delete value
-			var currentRecord = "sensor-keys-"+ dt +"-"+ dc;
-			alert("Value to Delete: "+ currentRecord);
-        		window.localStorage.removeItem(currentRecord);
-			// second delete key from ring	
-        		var prevStorage = window.localStorage.getItem("sensor-keys");
-			// not a good idea - remove current key ring
-       			//window.localStorage.removeItem("sensor-keys");
-        		if (prevStorage != null){
-	     			alert("Get Key Ring: " + prevStorage);
-				// split key ring string into array
-	     			var keysArray = prevStorage.split(',');
-				alert("keysArray.length: "+ keysArray.length);
-				// find key we want to delete
-				var keyFind = keysArray.indexOf(currentRecord);
-				if(keyFind != -1){
-					alert("Key to Delete: "+ keyFind);
-					// remove key from ring
-					keysArray.splice(keyFind, 1);
-					if(keysArray.length == 0){
-						alert("keysArray is empty: "+ keysArray.length);
-     						window.localStorage.removeItem("sensor-keys");
-					} else {
-						var newRing = keysArray.join();
-						window.localStorage.setItem("sensor-keys", newRing);
-					}
-				} 
-			}
-                },
-                complete: function(data) {
-                        //alert("complete:"+data.key);
-                }
-        });
-  },
-  clearLocalData: function(){
-	    alert("clearData");
-	    window.localStorage.clear();
-	    //window.localStorage.removeItem("sensor-keys");
-	    alert("Check: " + window.localStorage.getItem("sensor-keys"));
-  },
-  // local function for looping through local data a=local or remote,t=save or delete
-  getLocalData: function(a,t){
-     //alert("a: "+a);
-     //alert("t: "+t);
-     var localSave;
-     var prevStorage = window.localStorage.getItem("sensor-keys");
-      alert("prevStorage: "+prevStorage); 
-     if (prevStorage != null){
-	     alert("The following session keys are saved " + prevStorage);
-	     var keysArray = prevStorage.split(',');
-	     //var connectionStatus = navigator.onLine ? 'online' : 'offline';
-	     //if(connectionStatus != "offline") {
-	     var currentKey; // currentKey = sessionid
-	     var loopNum=keysArray.length;
-	     alert("Should loop " + loopNum + " times");
-	     for(var i=0; i<loopNum; i++){
-		     //alert("Loop number " +  i + "");
-		     currentKey = keysArray.pop();
-		     //alert("currentKey: "+currentKey);
-		     currentTime = currentKey.split('-');
-		     //alert("currentTimestamp: "+currentTime[2]);
-		     var read =  window.localStorage.getItem(currentKey);
-		     if(a=="local"){
-     			//alert("a: "+a);
-			localSave += read;	
-		     }
-		     //alert("Read Session: "+ read);
-		     if(a=="remote"){
-			alert("read: "+read);
-		     	app.submitRemote(read,currentTime[2]);
-		     }
-			     //to_submit = read.split(',');
-			     //n = oldKey.split('_')[1];
-	     }
-	     if(a=="local"){
-   		alert("a Save: ");
-		return localSave;
-	     }
-	     //window.localStorage.removeItem("sensor-keys");
-	     //alert("Unable to submit data");
-      }
-
-  },
-  submitRemote: function(s,t){
-     //alert("s:"+s);
-     //function rsubmit(s){
-	var url = 'http://data.sccwrp.org/sensor/load.php';
+  lookup: function(p){
+	var url = 'http://data.sccwrp.org/shs2/lookup.php';
+	//var p = "15625727718";
 	message = $.ajax({
 		type: 'GET',
 		url: url,
 		contentType: "application/json",
 		dataType: 'jsonp',
-		data: {ss: s,tt: t},
+		data: {pp: p},
 		crossDomain: true,
 		timeout: 4000,
 		error: function(x,t,m){ 
 			 if(t==="timeout"){ alert("Data not Submitted"); }
 		}, 
 		success: function(data) {
-			//alert("status:"+data.submit);
-			//alert("autoid:"+data.autoid);
-			//alert("captureid:"+data.captureid);
-			//alert("apptime:"+data.capturetime);
-			app.dataSyncCheck(data.autoid,data.captureid,data.apptime);
+			//alert("status:"+data.status[0]);
+			//alert("number:"+data.number[0]);
+			//lookup_number = data.number[0];
+			//return lookup_number;
+			lookup_success(data);
 		},
 		complete: function(data) {
 			//alert("complete:"+data.key);
 	        }
     	});
-      //} 
-      //rsubmit(s);
   },
-  saveLocalData: function(){
-    alert("saveLocalData");
-    fileSystem.root.getFile("test.txt", {create:true}, app.fileAppend, app.onError);
+  notify: function(e){
+	alert("app.notify");
+	alert(e)
+	var url = 'http://data.sccwrp.org/shs2/email.php';
+	//var p = "15625727718";
+	message = $.ajax({
+		type: 'GET',
+		url: url,
+		contentType: "application/json",
+		dataType: 'jsonp',
+		data: {ee: e},
+		crossDomain: true,
+		timeout: 4000,
+		error: function(x,t,m){ 
+			 if(t==="timeout"){ alert("Data not Submitted"); }
+		}, 
+		success: function(data) {
+			alert(data);
+			//alert("status:"+data.status[0]);
+			//alert("number:"+data.number[0]);
+			//lookup_number = data.number[0];
+		},
+		complete: function(data) {
+			//alert("complete:"+data.key);
+	        }
+    	});
+
   },
-  showLocalData: function(){
-    alert("showLocalData");
-    app.getLocalData("remote","save");
-  },
-  submitLocalData: function(){
-    alert("submitLocalData");
-    app.getLocalData("remote","save");
-  },
-/* end local storage */
-  getGPS: function(){
-    navigator.geolocation.getCurrentPosition(app.getGPSOnSuccess, app.getGPSOnFailure);
-  },
-  getGPSOnSuccess: function(position){
-    //alert("getGPSOnSuccess");
-    //var latlon = position.coords.latitude;
-    //latlon += ",";
-    //latlon += position.coords.longitude;
-    //return latlon;
-    // on device or document ready save device lat/lon to key/value for later user
-    window.localStorage.setItem("current-latitude", position.coords.latitude);	
-    window.localStorage.setItem("current-longitude", position.coords.longitude);	
-    //alert(latlon);
-  },
-  getGPSOnFailure: function(error){
-	alert("code: "+ error.code);
-	alert("message: "+ error.message);
-  },
-  getCamera: function(){
-    alert("Camera");
-    function onSuccess(imageURI){
-      var image = document.getElementById('myImage');
-      image.src = imageURI;
-    }
-    function onFail(message){
-      alert("Failed because: "+ message);
-    }
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
-  },
-  sendSMS: function(){
-	alert("sendSMS");
-	//smsplugin.send("5625727718","test from sccwrp",successCallback(result),failureCallback(error));
-	sms = window.plugins.sms;
-	sms.isSupported(successCallback(function(result) { alert("SMS works"); }), failureCallback(function(result) { alert("SMS failed"); }));
-  },
-  nativeAlert: function(){
-	alert("nativeAlert");
-	function helloWorld(){
-		alert("helloWorld");
-	}
-	navigator.notification.alert(
-		'Hello World Native Dialog',  //message
-		helloWorld,  //callback
-		'Hello World Title', //title
-		'Finished' //buttonName
-	);
-  },
-  testData: function(){
-    alert("testData");
-    var prevStorage = window.localStorage.getItem("sensor-keys");
-    var latitude = window.localStorage.getItem("current-latitude");
-    var longitude = window.localStorage.getItem("current-longitude");
-    if (prevStorage != null){
-    	window.localStorage.setItem("sensor-keys", ""+ prevStorage +",sensor-keys-"+ app.SESSIONID +"-1,sensor-keys-"+ app.SESSIONID +"-2");
-    } else {
-    	window.localStorage.setItem("sensor-keys","sensor-keys-"+ app.SESSIONID +"-1,sensor-keys-"+ app.SESSIONID +"-2");
-    } 
-    window.localStorage.setItem('sensor-keys-'+ app.SESSIONID +'-1', '{"id":"1","time":"14:34:56","ph":"4.5","orp":"234","do":"4.7","ec":"211μs","temp":"89","color":"4.5","lat":"'+latitude+'","lon":"'+longitude+'"}');
-    window.localStorage.setItem('sensor-keys-'+ app.SESSIONID +'-2', '{"id":"2","time":"09:03:23","ph":"3.0","orp":"450","do":"5.9","ec":"123μs","temp":"85","color":"2.1","lat":"'+latitude+'","lon":"'+longitude+'"}');
-    var currentStorage = window.localStorage.getItem("sensor-keys");
-    alert("Test pull on sensor-keys: "+ currentStorage);
-  },
-  onError: function() {
-    alert("onError");
-  },
-  onDeviceReady: function() {
-    alert("onDeviceReady");
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, app.onFSSuccess, app.onError);
-    var listPorts = function() {
-            bluetoothSerial.list(
-                function(results) {
-                    app.showContent(JSON.stringify(results));
-                },
-                function(error) {
-                    app.showContent(JSON.stringify(error));
-                }
-            );
-    }
-    var notEnabled = function() {
-            app.showContent("Bluetooth is not enabled.")
-    }
-    bluetoothSerial.isEnabled(
-            listPorts,
-            notEnabled
-    );
-    app.getGPS();
-  },
-  initialize: function() {
-	//alert("initialize");
-	// disable jquery mobile routing
-       $.mobile.ajaxEnabled = false;
-       $.mobile.linkBindingEnabled = false;
-       $.mobile.hashListeningEnabled = false;
-       $.mobile.pushStateEnabled = false;
-	
-	app.bindEvents();
-    	document.addEventListener("deviceready", app.onDeviceReady, true);
+  receipt: function(){
+	alert("app.receipt");
   }
 };
+$(document).ready(function(){
+  Backbone.history.start({pushState: true});
+  appRouter.start();
+});

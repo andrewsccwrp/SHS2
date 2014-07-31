@@ -46,6 +46,8 @@
 	  <% } else if ((type) == "multi"){  %>
   	    <div class="form-left-col"><h3>Multi Question - <%= qcount %> - <%= type %></h3>
 	    <div data-role="fieldcontain">
+          	<label>Record ID:</label>
+          	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
    	      <label for="select-choice-1" class="select">Choose shipping method:</label>
     		<select name="aid" id="aid" multiple="multiple">
         	  <option value="standard">Standard: 7 day</option>
@@ -58,6 +60,9 @@
 	  <% } else if ((type) == "select"){  %>
   	    <div class="form-left-col"><h3>Select Question - <%= qcount %> - <%= type %></h3>
         	<label>Record ID:</label>
+        	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
+        	<label>Question ID:</label>
+        	<input type="text" id="qid" name="qid" value="<%= qcount %>" disabled />
 		<fieldset class="ui-field-contain">
     		  <select name="aid" id="aid">
 		    <label for="day"><%= id %></label>

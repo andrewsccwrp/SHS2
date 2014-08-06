@@ -1,4 +1,4 @@
-[
+listOfQuestions = [
   {
 	"title": "Do you speak English?",
 	"action": "none",

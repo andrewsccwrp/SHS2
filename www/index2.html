@@ -1,0 +1,62 @@
+<html class="ui-mobile-rendering">
+  <head>
+      <title>Sensor</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="http://demos.jquerymobile.com/1.4.2/css/themes/default/jquery.mobile-1.4.2.min.css"/>
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+		<link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+		<link rel="stylesheet" href="css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://demos.jquerymobile.com/1.4.2/js/jquery.mobile-1.4.2.min.js"></script> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/underscore-min.js"></script>
+		<script src="js/backbone-min.js"></script>
+		<script src="js/backbone-marionette.js"></script>
+		<script src="questions.json"></script>
+		<script src="js/application2.js"></script>
+		<script src="js/json2.js"></script>
+
+    </head>
+	<body class="ui-mobile-viewport ui-overlay-b">
+		<script type="text/template" id="question-template">
+    	    <div class="form-left-col"><h3><%= title %></h3>
+          	<label>Question ID: <%= id %></label>
+          	<label>Answer</label>
+			<% if((type) == "radio"){ %>
+			<input type="radio" id="aid" name="aid" value="Yes">Yes</input>
+			<input type="radio" id="aid" name="aid" value="No">No</input>
+			<% } else if ((type) == "multi"){  %>
+			<label for="select-choice-1" class="select">Choose shipping method:</label>
+    		<select name="aid" id="aid" multiple="multiple">
+        	  <option value="standard">Standard: 7 day</option>
+        	  <option value="rush">Rush: 3 days</option>
+        	  <option value="express">Express: next day</option>
+        	  <option value="overnight">Overnight</option>
+    		</select>
+			<% } else if ((type) == "select"){  %>
+			<fieldset class="ui-field-contain">
+    		  <select name="aid" id="aid">
+				<label for="day"><%= id %></label>
+      			<option value="mon">Monday</option>
+      			<option value="tue">Tuesday</option>
+      			<option value="wed">Wednesday</option>
+    		  </select>
+			 </fieldset>
+			<% } else if ((type) == "text"){  %>
+        	<input type="text" id="aid" name="aid" value="" required/>
+			<% } else if ((type) == "checkbox"){  %>
+			<input type="checkbox" id="aid" name="aid" value="HB">HB</input>
+			<input type="checkbox" id="aid" name="aid" value="Ocean">Ocean</input>
+			<% } %>
+			<button id="next" class="next">Next</button>
+          	<button id="previous" class="previous">Previous</button>
+			<%= validation %>
+    	    </div>
+		</script>
+		<div data-role="page" data-theme="b">
+		<div id="content" data-role="content" class="ui-content" role="main">
+		</div>
+		</div>
+	</body>
+</html>

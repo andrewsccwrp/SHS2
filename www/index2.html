@@ -19,6 +19,35 @@
 
     </head>
 	<body class="ui-mobile-viewport ui-overlay-b">
+		<script type="text/template", id="navigation-template">
+			<a id="questionnaire" class="questionnaire">questionnaire</></a>
+			<a id="login" class="login">Login</a>
+			<a id="receipt" class="receipt">Receipt</a>
+		</script>
+		<script type="text/template", id="receipt-template">
+			<div class="form-left-col"><h3>Please review your responses</h3>
+				<table>
+					<tr>
+						<td>Question</td>
+						<td>Your response</td>
+					</tr>
+               <% for (var i = 0; i < data.length; i++) { %>
+					<tr>
+						<td><%= data[i].title %></td>
+						<td><%= data[i].answer %></td>
+					</tr>
+               <% } %>
+			   </table>
+			<button id="next" class="submit">Verify and Submit</button>
+			</div>
+		</script>
+		<script type="text/template", id="login-template">
+			<div class="form-left-col"><h3>Log-in</h3>
+			<input type="text" id="aid" name="aid" value="">User Name</input>
+			<input type="password" id="aid" name="aid" value="">Password</input>
+			<button id="next" class="submit">Submit</button>
+			</div>
+		</script>
 		<script type="text/template" id="question-template">
     	    <div class="form-left-col"><h3><%= title %></h3>
           	<label>Question ID: <%= id %></label>
@@ -55,6 +84,7 @@
     	    </div>
 		</script>
 		<div data-role="page" data-theme="b">
+		<div id="navigation" data-role="content" class="ui-content" role="main"></div>
 		<div id="content" data-role="content" class="ui-content" role="main">
 		</div>
 		</div>

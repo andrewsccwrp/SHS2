@@ -4,6 +4,7 @@ var loginStatus = false;
 var networkStatus;
 var SESSIONID = +new Date;
 var USERID;
+var user;
 //model
 var Answer = Backbone.Model.extend({
 	initialize: function(){
@@ -30,12 +31,9 @@ var User = Backbone.Model.extend({
 	initialize: function(){
             alert("Welcome to User Login");
         },
-	url:"http://data.sccwrp.org/shs2/index.php/user",
-	defaults:{
-	  "id":null,
-	  "phone":"",
-	  "email":""+SESSIONID+"@sccwrp.org"
-	}
+    	// critical - urlRoot must be used to make get,post,put requests not url
+	urlRoot:"http://data.sccwrp.org/shs2/index.php/user"
+	//url:"http://data.sccwrp.org/shs2/index.php/user"
 });
 var UserView = Backbone.View.extend({
 	el: '#content',
@@ -298,6 +296,17 @@ var AnswerListView = Backbone.View.extend({
 		  case 6:
 			var currentPhone = currentAnswer.replace(/-/g, '');
 			answerDetails = { q6: currentPhone, qcount: nextQuestion};
+			user.save({ phone: currentPhone }, {
+		                wait: true,
+		                success: function(response){
+						console.log(user.toJSON());
+				},
+				error: function(response){
+						console.log(response.responseText);
+						console.log(response.status);
+						console.log(response.statusText);
+				       }
+			});
 		  	break;	
 		  case 7:
 			if(currentAnswer == "phone"){
@@ -314,6 +323,17 @@ var AnswerListView = Backbone.View.extend({
 		  	break;	
 		  case 8:
 			answerDetails = { q8: currentAnswer, qcount: nextQuestion};
+			user.save({ email: currentAnswer }, {
+		                wait: true,
+		                success: function(response){
+						console.log(user.toJSON());
+				},
+				error: function(response){
+						console.log(response.responseText);
+						console.log(response.status);
+						console.log(response.statusText);
+				       }
+			});
 		  	break;	
 		  case 9:
 			answerDetails = { q9: currentAnswer, qcount: nextQuestion};
@@ -627,13 +647,15 @@ routes: {
   signup: function(){
 	console.log("signup");
 	// create initial record in database - set timestamp
-	var user = new User();
-	//user.save({ email: ""+SESSIONID++"@sccwrp.org" }, {
-	user.save({}, {
+	user = new User();
+	var seedEmail = chance.email();
+	var seedPhone = chance.phone();
+	var userCreate = user.save({email: seedEmail, phone: seedPhone}, {
 	  wait: true,
 	  success: function(response){
 		console.log(response);
 		console.log(response.id);
+		USERID = response.id;
 	  },
  		error: function(model,response){
 		console.log("failed");
@@ -642,10 +664,11 @@ routes: {
 		console.log(response.statusText);
 	  }
 	});
+      userCreate.done(function(){
 	//userView = new UserView({model: user});
 	answerList = new AnswerList();
 	this.answerList = answerList;
-	answerList.create({qcount: 1, timestamp: SESSIONID}, {
+	answerList.create({q6: seedPhone, q8: seedEmail, qcount: 1, timestamp: SESSIONID, uid: USERID}, {
 	  wait: true,
 	  success: function(model,response){
 		console.log("start - success");
@@ -675,6 +698,7 @@ routes: {
 		console.log("questionList Failed");
 	  }
 	});
+      });
   },
   weekly: function(){
 	console.log("weekly");

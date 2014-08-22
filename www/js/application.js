@@ -1,3 +1,5 @@
+alert("test")
+
 var appRouter = new (Backbone.Router.extend({
   routes: {
     "shs2/receipt/:appid": "receipt",

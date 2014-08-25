@@ -133,13 +133,11 @@ var AnswerListView = Backbone.View.extend({
 			success: function(response){
 				question = questionList.get(nq);
 				var type = question.attributes.type;
-				var menu = question.attributes.menu.split(",");
-				console.log(menu);
+				var menu = question.attributes.menu.split(","); //menu options in JSON are in one string
 				questionListView = new QuestionListView({model: question});
 				questionListView.render();
-				//check.render(question.attributes.type);
-				console.log("answer renderer");
-				t.render(type, menu);
+				t.render(type, menu); // this render is called starting from the second question.
+						      // render is called the first time from the router
 			},
 			error: function(response){
 				console.log("questionList Failed");
@@ -147,17 +145,12 @@ var AnswerListView = Backbone.View.extend({
 		});
 	},
 	render: function(form_type, menu_opts){
-		if(menu_opts == "test") {
+		//this is to substitute in menu options for the the first question when sent from the router
+		if(menu_opts == "test") { 
 			menu_opts = ['Yes', 'No'];
 		};
-		//console.log("AnswerListView render");
-		console.log(menu_opts);
-		//console.log(this.model.toJSON());
-		//console.log(this.model.get('qcount'));
 		$(this.el).html("");
-		//console.log(this.model.get('id'));
 		this.model.set({"type":form_type, "menu":menu_opts});
-		//console.log(this.model.toJSON());
 		$(this.el).html(this.template(this.model.toJSON()));	
 		$('#multi-radio').trigger('create');
 		return this;

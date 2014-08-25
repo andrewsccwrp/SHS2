@@ -133,23 +133,30 @@ var AnswerListView = Backbone.View.extend({
 			success: function(response){
 				question = questionList.get(nq);
 				var type = question.attributes.type;
+				var menu = question.attributes.menu.split(",");
+				console.log(menu);
 				questionListView = new QuestionListView({model: question});
 				questionListView.render();
 				//check.render(question.attributes.type);
-				t.render(type);
+				console.log("answer renderer");
+				t.render(type, menu);
 			},
 			error: function(response){
 				console.log("questionList Failed");
 			}
 		});
 	},
-	render: function(form_type){
+	render: function(form_type, menu_opts){
+		if(menu_opts == "test") {
+			menu_opts = ['Yes', 'No'];
+		};
 		//console.log("AnswerListView render");
+		console.log(menu_opts);
 		//console.log(this.model.toJSON());
 		//console.log(this.model.get('qcount'));
 		$(this.el).html("");
 		//console.log(this.model.get('id'));
-		this.model.set({"type":form_type});
+		this.model.set({"type":form_type, "menu":menu_opts});
 		//console.log(this.model.toJSON());
 		$(this.el).html(this.template(this.model.toJSON()));	
 		$('#multi-radio').trigger('create');

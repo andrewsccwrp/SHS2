@@ -18,7 +18,7 @@
 	"action": "none",
       	"num": "q12",
 	"nnum": "q2",
-      	"type": "checkbox",
+      	"type": "radio",
       	"menu": "Yes,No",
         "other": "n",
 	"otype": "",

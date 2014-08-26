@@ -37,6 +37,29 @@ var AnswerListView = Backbone.View.extend({
 		// next question  
 		var nextQuestion = (currentQuestion + 1);
 
+		// storing userid email and phone
+		if(currentQuestion == 6){
+			user.save({ phone: currentAnswer }, {
+				wait: true,
+				success: function(response){
+					console.log(user.toJSON());
+				},
+				error: function(response){
+					console.log(response.status);
+				}
+			});
+		}
+		if(currentQuestion == 8){
+			user.save({ email: currentAnswer }, {
+				wait: true,
+				success: function(response){
+					console.log(user.toJSON());
+				},
+				error: function(response){
+					console.log(response.status);
+				}
+			});
+		}
                 // logic for skipping certain questions
 		if(currentQuestion == 7 && currentAnswer == "phone") {
 			alert("phone answer");

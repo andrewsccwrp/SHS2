@@ -11,57 +11,53 @@ var appRouter = new (Backbone.Router.extend({
   signup: function(){
 	console.log("signup");
 	// create initial record in database - set timestamp
-	var user = new User();
-	//user.save({ email: ""+SESSIONID++"@sccwrp.org" }, {
-	user.save({}, {
-	  wait: true,
-	  success: function(response){
-		console.log(response);
-		console.log(response.id);
-	  },
- 		error: function(model,response){
-		console.log("failed");
-		console.log(response.responseText);
-		console.log(response.status);
-		console.log(response.statusText);
-	  }
+	user = new User();
+	var seedEmail = chance.email();
+	var seedPhone = chance.phone();
+	var userCreate = user.save({email: seedEmail, phone: seedPhone}, {
+	  	wait: true,
+	      	success: function(response){
+	  		console.log(response);
+			console.log(response.id);
+			USERID = response.id;
+		  },
+		error: function(model,response){
+	       		console.log("failed");
+			console.log(response.responseText);
+			console.log(response.status);
+			console.log(response.statusText);
+		}
 	});
-	//userView = new UserView({model: user});
-	answerList = new AnswerList();
-	this.answerList = answerList;
-	answerList.create({qcount: 1, timestamp: SESSIONID}, {
-	  wait: true,
-	  success: function(model,response){
-		console.log("start - success");
-		//console.log(response);
-		answer = answerList.get(response.id);
-		answerListView = new AnswerListView({model: answer});
-		/* initializes render from this location only for the first time.
-		 * Every question after the first is routed from the getQuestion method
-		 * of the AnswerListView. The second argument passes in the menu options. */
-		answerListView.render("radio", "test");
-		//this.close;
-	  },
- 		error: function(model,response){
-		console.log("failed");
-		console.log(response.responseText);
-		console.log(response.status);
-		console.log(response.statusText);
-	  }
-	});
-     	var questionList = new QuestionList();
-     	questionList.fetch({
-	  success: function(response){
-		console.log("questionList fetch");
-		question = questionList.get(1);
-		var type = question.attributes.type;
-		questionListView = new QuestionListView({model: question});
-		questionListView.render();
-	  },
-	  error: function(response){
-		console.log("questionList Failed");
-	  }
-	});
+      	userCreate.done(function(){
+	  answerList = new AnswerList();
+	  this.answerList = answerList;
+	  answerList.create({q6: seedPhone, q8: seedEmail, qcount: 1, timestamp: SESSIONID, uid: USERID}, {
+		wait: true,
+		success: function(model,response){
+			answer = answerList.get(response.id);
+			answerListView = new AnswerListView({model: answer});
+			answerListView.render("radio", "test");
+		},
+		error: function(model,response){
+			console.log("failed");
+			console.log(response.responseText);
+			console.log(response.status);
+			console.log(response.statusText);
+		}
+	  });
+     	  var questionList = new QuestionList();
+     	  questionList.fetch({
+	  	success: function(response){
+			question = questionList.get(1);
+			var type = question.attributes.type;
+			questionListView = new QuestionListView({model: question});
+			questionListView.render();
+	  	},
+	  	error: function(response){
+			console.log("questionList Failed");
+	  	}
+	  });
+	}); // userCreate.done
   },
   weekly: function(){
 	console.log("weekly");
@@ -85,7 +81,6 @@ var appRouter = new (Backbone.Router.extend({
      	var questionList = new QuestionList();
      	questionList.fetch({
 	  success: function(response){
-		console.log("questionList fetch");
 		question = questionList.get(33);
 		var type = question.attributes.type;
 		questionListView = new QuestionListView({model: question});

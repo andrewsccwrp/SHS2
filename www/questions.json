@@ -10,6 +10,8 @@
 	"otype": "",
 	"check": "0,1",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "1"
   },
@@ -23,6 +25,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "2"
   },
@@ -35,6 +39,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "3"
   },
@@ -47,6 +53,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "4"
   },
@@ -59,6 +67,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "5"
   },
@@ -71,6 +81,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "yes",
+	"declinedefault": "999-999-9999",
       	"status": "incomplete",
       	"id": "6"
   },
@@ -83,6 +95,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "7"
   },
@@ -95,6 +109,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "8"
   },
@@ -107,6 +123,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "9"
   },
@@ -119,6 +137,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "10"
   },
@@ -131,6 +151,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "11"
   },
@@ -143,6 +165,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "12"
   },
@@ -155,6 +179,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "13"
   },
@@ -167,6 +193,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "14"
   },
@@ -179,6 +207,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "15"
   },
@@ -191,6 +221,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "16"
   },
@@ -203,6 +235,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "17"
   },
@@ -215,6 +249,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "18"
   },
@@ -227,6 +263,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "19"
   },
@@ -239,6 +277,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "20"
   },
@@ -251,6 +291,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "21"
   },
@@ -263,6 +305,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "22"
   },
@@ -275,6 +319,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "23"
   },
@@ -287,6 +333,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "24"
   },
@@ -299,6 +347,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "25"
   },
@@ -311,6 +361,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "26"
   },
@@ -333,6 +385,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "28"
   },
@@ -345,6 +399,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "29"
   },
@@ -357,6 +413,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "30"
   },
@@ -369,6 +427,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "31"
   },
@@ -381,6 +441,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "32"
   },
@@ -393,6 +455,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "33"
   },
@@ -405,6 +469,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "34"
   },
@@ -417,6 +483,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "35"
   },
@@ -429,6 +497,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "36"
   },
@@ -441,6 +511,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "37"
   },
@@ -453,6 +525,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "38"
   },
@@ -465,6 +539,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "39"
   },
@@ -477,6 +553,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "40"
   },
@@ -489,6 +567,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "41"
   },
@@ -501,6 +581,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "42"
   },
@@ -513,6 +595,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "43"
   },
@@ -525,6 +609,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "44"
   },
@@ -537,6 +623,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "45"
   },
@@ -549,6 +637,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "46"
   },
@@ -561,6 +651,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "47"
   },
@@ -573,6 +665,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "48"
   },
@@ -585,6 +679,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "49"
   },
@@ -597,6 +693,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "50"
   },
@@ -609,6 +707,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "51"
   },
@@ -621,6 +721,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "52"
   },
@@ -633,6 +735,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "53"
   },
@@ -645,6 +749,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "54"
   },
@@ -657,6 +763,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "55"
   },
@@ -669,6 +777,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "56"
   },
@@ -681,6 +791,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "57"
   },
@@ -693,6 +805,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "58"
   },
@@ -705,6 +819,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "59"
   },
@@ -717,6 +833,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "60"
   },
@@ -729,6 +847,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "61"
   },
@@ -741,6 +861,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "62"
   },
@@ -753,6 +875,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "62"
   },
@@ -765,6 +889,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "63"
   },
@@ -777,6 +903,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "63"
   },
@@ -789,6 +917,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "64"
   },
@@ -801,6 +931,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "64"
   },
@@ -813,6 +945,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "65"
   },
@@ -825,6 +959,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "66"
   },
@@ -837,6 +973,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "67"
   },
@@ -849,6 +987,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "68"
   },
@@ -861,6 +1001,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "69"
   },
@@ -873,6 +1015,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "70"
   }

@@ -125,13 +125,16 @@
           	<label>Question ID:</label>
          	<input type="text" id="qid" name="qid" value="<%= qcount %>" disabled />
 		<button id="save" class="save">Save</button>
+		<% if(decline == "yes") { %>
+			<button id="decline" class="decline">Decline and save</button>
+			<% }; %>
 	  <div id="multi-radio" data-role='fieldcontain'>
-	   <form>
+	   <form id ="aid" >
 	    <div style="margin: 0 auto; display: table; width: 19em; position:relative;">
 		    <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain" data-mini="true">
 			<% for(i=0; i < menu.length; i++) { %>
-			<input type="radio" class="radioClass" name="aid" id=<%= "radio-choice-" + String(i + 1) %> value= <%= menu[i] %> />
-			<label class="radioClassLabel" for=<%= "radio-choice-" + String(i + 1)  %> id= <%= "radioLabel-" + String.fromCharCode(97 + 1)  %> >
+			<label class="radioClassLabel" id= <%= "radioLabel-" + String.fromCharCode(97 + 1)  %> >
+				<input type="radio" class="radioClass" id="radio-ID" name="radioSelect" value= <%= menu[i] %> />
 			 <span class="ui-btn-inner"><span class="ui-btn-text" id= <%= "radio-text-" + String.fromCharCode(97 +i)  %> > <%= menu[i] %> </span></span></label>
 			<% }; %>
 		</fieldset>
@@ -176,6 +179,9 @@
         	<label>Answer</label>
         	<input type="text" id="aid" name="aid" value="" required/>
         	<button id="save" class="save">Save</button>
+		<% if(decline == "yes") { %>
+			<button id="decline" class="save">Decline and save</button>
+			<% }; %>
     	    </div>
 	  <% } else if ((type) == "checkbox"){  %>
           	<label>Record ID:</label>

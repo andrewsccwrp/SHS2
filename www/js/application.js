@@ -38,8 +38,8 @@ var appRouter = new (Backbone.Router.extend({
 		answerListView = new AnswerListView({model: answer});
 		/* initializes render from this location only for the first time.
 		 * Every question after the first is routed from the getQuestion method
-		 * of the AnswerListView. The second argument passes in the menu options. */
-		answerListView.render("radio", "test");
+		 * of the AnswerListView.*/ 
+		answerListView.render("default");
 		//this.close;
 	  },
  		error: function(model,response){
@@ -73,7 +73,7 @@ var appRouter = new (Backbone.Router.extend({
 	  success: function(model,response){
 		answer = answerList.get(response.id);
 		answerListView = new AnswerListView({model: answer});
-		answerListView.render("radio", "test");
+		answerListView.render("default");
 	  },
  		error: function(model,response){
 		console.log("failed");

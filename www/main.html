@@ -35,6 +35,7 @@
 	<script src="js/vendor/underscore-min.js"></script>
 	<script src="js/vendor/backbone-min.js"></script>
 	<script src="js/vendor/json2.js"></script>
+	<script src="js/vendor/chance.min.js"></script>
 	<script type="text/template" id="tpl-contact-details">
     		<div class="form-left-col"><h3>Contact Content</h3></div>
 	</script>
@@ -120,6 +121,8 @@
 	<script type="text/template" id="tpl-answer-details">
 	  <% if((type) == "radio"){ %>
 	  <h3>Radio Question - <%= qcount %> - <%= type %></h3>
+         	<label>User ID:</label>
+          	<input type="text" value="<%= uid %>" disabled />
          	<label>Record ID:</label>
           	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
           	<label>Question ID:</label>
@@ -144,6 +147,8 @@
 	  <% } else if ((type) == "multi"){  %>
   	    <div class="form-left-col"><h3>Multi Question - <%= qcount %> - <%= type %></h3>
 	    <div data-role="fieldcontain">
+         	<label>User ID:</label>
+          	<input type="text" value="<%= uid %>" disabled />
           	<label>Record ID:</label>
           	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
    	      <label for="select-choice-1" class="select">Choose shipping method:</label>
@@ -157,6 +162,8 @@
 	    </div>
 	  <% } else if ((type) == "select"){  %>
   	    <div class="form-left-col"><h3>Select Question - <%= qcount %> - <%= type %></h3>
+         	<label>User ID:</label>
+          	<input type="text" value="<%= uid %>" disabled />
         	<label>Record ID:</label>
         	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
         	<label>Question ID:</label>
@@ -172,6 +179,8 @@
     	    </div>
 	  <% } else if ((type) == "text"){  %>
   	    <div class="form-left-col"><h3>Text Question - <%= qcount %> - <%= type %></h3>
+         	<label>User ID:</label>
+          	<input type="text" value="<%= uid %>" disabled />
         	<label>Record ID:</label>
         	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
         	<label>Question ID:</label>
@@ -184,6 +193,8 @@
 			<% }; %>
     	    </div>
 	  <% } else if ((type) == "checkbox"){  %>
+         	<label>User ID:</label>
+          	<input type="text" value="<%= uid %>" disabled />
           	<label>Record ID:</label>
           	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
           	<label>Question ID:</label>

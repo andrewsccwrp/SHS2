@@ -11,22 +11,21 @@ var appRouter = new (Backbone.Router.extend({
   signup: function(){
 	console.log("signup");
 	// create initial record in database - set timestamp
-	user = new User();
-	var seedEmail = chance.email();
-	var seedPhone = chance.phone();
-	var userCreate = user.save({email: seedEmail, phone: seedPhone}, {
-	  	wait: true,
-	      	success: function(response){
-	  		console.log(response);
-			console.log(response.id);
-			USERID = response.id;
-		  },
-		error: function(model,response){
-	       		console.log("failed");
-			console.log(response.responseText);
-			console.log(response.status);
-			console.log(response.statusText);
-		}
+<<<<<<< HEAD
+	var user = new User();
+	//user.save({ email: ""+SESSIONID++"@sccwrp.org" }, {
+	user.save({}, {
+	  wait: true,
+	  success: function(response){
+		console.log(response);
+		console.log(response.id);
+	  },
+ 		error: function(model,response){
+		console.log("failed");
+		console.log(response.responseText);
+		console.log(response.status);
+		console.log(response.statusText);
+	  }
 	});
 	//userView = new UserView({model: user});
 	answerList = new AnswerList();
@@ -63,7 +62,55 @@ var appRouter = new (Backbone.Router.extend({
 	  error: function(response){
 		console.log("questionList Failed");
 	  }
+=======
+	user = new User();
+	var seedEmail = chance.email();
+	var seedPhone = chance.phone();
+	var userCreate = user.save({email: seedEmail, phone: seedPhone}, {
+	  	wait: true,
+	      	success: function(response){
+	  		console.log(response);
+			console.log(response.id);
+			USERID = response.id;
+		  },
+		error: function(model,response){
+	       		console.log("failed");
+			console.log(response.responseText);
+			console.log(response.status);
+			console.log(response.statusText);
+		}
+>>>>>>> 7082662972262ee0ddd83ad58339d1d2aca7ed66
 	});
+      	userCreate.done(function(){
+	  answerList = new AnswerList();
+	  this.answerList = answerList;
+	  answerList.create({q6: seedPhone, q8: seedEmail, qcount: 1, timestamp: SESSIONID, uid: USERID}, {
+		wait: true,
+		success: function(model,response){
+			answer = answerList.get(response.id);
+			answerListView = new AnswerListView({model: answer});
+			answerListView.render("radio", "test");
+		},
+		error: function(model,response){
+			console.log("failed");
+			console.log(response.responseText);
+			console.log(response.status);
+			console.log(response.statusText);
+		}
+	  });
+     	  var questionList = new QuestionList();
+     	  questionList.fetch({
+	  	success: function(response){
+			question = questionList.get(1);
+			var type = question.attributes.type;
+			questionListView = new QuestionListView({model: question});
+			questionListView.render();
+	  	},
+	  	error: function(response){
+			console.log("questionList Failed");
+	  	}
+	  });
+	}); // userCreate.done
   },
   weekly: function(){
 	console.log("weekly");

@@ -90,7 +90,7 @@
 	"title": "The study will send you a weekly reminder to fill out a quick, 10-minute survey of your surf activity and health. Would you prefer that the study contact you primarily by phone through text messages (SMS) or by email?",
 	"action": "none",
       	"num": "q17",
-      	"type": "radio",
+      	"type": "select",
       	"menu": "email,text message", 
         "other": "n",
 	"otype": "",

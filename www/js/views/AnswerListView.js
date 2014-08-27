@@ -25,7 +25,8 @@ var AnswerListView = Backbone.View.extend({
 	},
 	selectorString: {
 				"radio":"#aid input[type = 'radio']:checked",
-				"text":"#aid"
+				"text":"#aid",
+				"select":"#aid"
 			},
 	saveAnswer:function(event){
 		console.log("saveAnswer");
@@ -171,7 +172,7 @@ var AnswerListView = Backbone.View.extend({
 		question_opts.menu = question_opts.menu.split(","); //menu options in JSON are in one string
 		$(this.el).html("");
 		this.model.set(question_opts);
-		$(this.el).html(this.template(this.model.toJSON()));	
+		$(this.el).html(this.template(this.model.toJSON()));
 		$('#multi-radio').trigger('create');
 		return this;
 	}

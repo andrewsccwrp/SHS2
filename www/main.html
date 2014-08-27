@@ -152,12 +152,11 @@
           	<input type="text" value="<%= uid %>" disabled />
           	<label>Record ID:</label>
           	<input type="text" id="rid" name="rid" value="<%= id %>" disabled />
-   	      <label for="select-choice-1" class="select">Choose shipping method:</label>
-    		<select name="aid" id="aid" multiple="multiple">
-        	  <option value="standard">Standard: 7 day</option>
-        	  <option value="rush">Rush: 3 days</option>
-        	  <option value="express">Express: next day</option>
-        	  <option value="overnight">Overnight</option>
+   	      <label for="select-choice-1" class="select">Select all that apply: </label>
+    		<select name="aid" id="aid" multiple="multiple" data-native-menu="false" tabindex="-1">
+		  <% for(i=0; i < menu.length; i++) { %>
+		 	 <option value= <%= menu[i] %> > <%= menu[i] %> </option>
+		  <% }; %>
     		</select>
         	<button id="save" class="save">Save</button>
 	    </div>
@@ -225,5 +224,35 @@
 	<script src="js/collections/QuestionList.js"></script>
 	<script src="js/collections/ReceiptList.js"></script>
 	<script src="js/application.js"></script>
+    <script type="text/javascript">
+        var jqmCSS;
+        var deviceCSS;
+        var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
+        if((deviceType == "iPad" || deviceType == "iPhone")){
+            //jqmCSS = "css/jquery.mobile-1.2.0.min.css";
+            //deviceCSS = "css/ios-theme.css";
+            //deviceCSS = "css/topcoat/css/topcoat-mobile-light.css";
+            //jqmCSS = "css/jquery.mobile.structure-1.3.1.min.css";
+            //deviceCSS = "css/SCCWRPMobile.min.css";
+            $('#Mod-bar').css('width','60%');
+            $('#Full-bar').css('width','60%');
+            $('#modLabel').css('width','110px');
+            $('#fullLabel').css('width','110px');
+        } else if (deviceType == "Android"){
+            //jqmCSS = "css/jquery.mobile.structure-1.3.1.min.css";
+            //deviceCSS = "css/android-theme.css";
+            $('#Mod-bar').css('width','60%');
+            $('#Full-bar').css('width','60%');
+            $('#modLabel').css('width','110px');
+            $('#fullLabel').css('width','110px');
+        } else {
+            jqmCSS = "css/jquery.mobile.structure-1.3.1.min.css";
+            deviceCSS = "css/SCCWRPMobile.min.css";
+            
+            //deviceCSS = "css/topcoat/css/topcoat-mobile-light.css";
+        }
+    //$(".cssJQM").attr("href", jqmCSS);
+    //$(".cssDevice").attr("href", deviceCSS);
+  </script>
   </body>
 </html>

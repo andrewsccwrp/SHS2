@@ -20,10 +20,13 @@ var AnswerListView = Backbone.View.extend({
 	},
     	declineAnswer:function(event){
 		formtype = this.model.get("type");
-		$(this.selectorString[type]).val(this.model.get("declinedefault"));
-		this.saveAnswer;
+		$(this.selectorString[formtype]).val(this.model.get("declinedefault"));
+		this.saveAnswer(event);
 	},
-	selectorString: {"radio":"#aid input[type = 'radio']:checked"},
+	selectorString: {
+				"radio":"#aid input[type = 'radio']:checked",
+				"text":"#aid"
+			},
 	saveAnswer:function(event){
 		console.log("saveAnswer");
 		var timer = 0;

@@ -26,7 +26,8 @@ var AnswerListView = Backbone.View.extend({
 	selectorString: {
 				"radio":"#aid input[type = 'radio']:checked",
 				"text":"#aid",
-				"select":"#aid"
+				"select":"#aid",
+				"multi":"#aid input[type = 'checkbox']:checked"
 			},
 	saveAnswer:function(event){
 		console.log("saveAnswer");
@@ -35,15 +36,22 @@ var AnswerListView = Backbone.View.extend({
 		var that = this;
 		
 		formtype = this.model.get("type");
-		var currentAnswer = $(this.selectorString[formtype]).val(); 
+		var currentAnswer = $(this.selectorString[formtype]); 
+		if(formtype == "multi") {
+			var temparray = [];
+			currentAnswer.map(function () { temparray.push(this.value); });
+			currentAnswer = temparray.join();
+		} else {
+			currentAnswer = currentAnswer.val();
+		};
 		console.log("currentAnswer: "+ currentAnswer);
 		// current question
 		// too slow
-		//var currentQuestion = Number(this.model.get("qcount")); 
+		var currentQuestion = Number(this.model.get("qcount")); 
 		//console.log("currentQuestion: "+ currentQuestion);
 		appID = Number(this.model.get("id")); 
 		//console.log("appID: "+ appID);
-		var currentQuestion = (Number($('#qid').val()));
+		//var currentQuestion = (Number($('#qid').val()));
 		// next question  
 		var nextQuestion = (currentQuestion + 1);
 
@@ -174,6 +182,7 @@ var AnswerListView = Backbone.View.extend({
 		this.model.set(question_opts);
 		$(this.el).html(this.template(this.model.toJSON()));
 		$('#multi-radio').trigger('create');
+		$("input[type='checkbox']").checkboxradio();
 		return this;
 	}
 });

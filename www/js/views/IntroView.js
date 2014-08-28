@@ -30,7 +30,7 @@ var IntroView = Backbone.View.extend({
 		console.log("introview render");
 		$(this.el).html("");
 		$(this.el).html(this.template());	
-		$('#landList').listview( "refresh" );
-		$('#content').trigger('create');
+		//$('#landList').listview( "refresh" );
+		//$('#content').trigger('create');
 	}
 });

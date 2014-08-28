@@ -245,7 +245,7 @@
 	"action": "none",
       	"num": "q27",
       	"type": "select",
-      	"menu": "Select One,Yes always wait,Yes sometimes wait,No",
+      	"menu": "Yes always wait,Yes sometimes wait,No",
         "other": "n",
 	"otype": "",
   	"answer": "",

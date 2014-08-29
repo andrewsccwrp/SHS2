@@ -204,17 +204,16 @@
 		<div class="ui-field-contain" data-inset="true">
 			<fieldset data-role="controlgroup" id="aid">
 			<legend>Select all that apply: </legend>
-			<% today = new Date;
-			days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-			days = days.slice(0, today.getDate() + 1 ).reverse().concat(days.slice(todays.getDate(), 6).reverse);
-			days[0] = "Today";	
-			for(i=0; i < 7; i++) { %>
-			<input type="checkbox" class="custom" value= <%= days[i] %>  name = <%= days[i] %>  id= <%= days[i] %> />
+			<% today = new Date; %>
+			<% days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; %>
+			<% days = days.slice(0, today.getDay() + 1 ).reverse().concat(days.slice(today.getDay() + 1, 7).reverse()); %>
+			<% days[0] = "Today";	 %>
+			<% for(i=0; i < 7; i++) { %>
+			<input type="checkbox" class="custom" value= <%= today.getMonth() + "/" + (today.getDate() - i) + "/" + (today.getYear() + 1900)  %>  name = <%= days[i] %>  id= <%= days[i] %> />
 			<label for= <%= days[i] %> >  <%= days[i] %> </label> 
 	 		<% }; %>
 			</fieldset>
 		</div>
-        	<button id="save" class="save">Save</button>
           	<button id="save" class="save">Save</button>
 	  <% } %>
 	</script>

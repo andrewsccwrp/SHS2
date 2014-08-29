@@ -90,7 +90,7 @@ var AnswerListView = Backbone.View.extend({
 		if(currentQuestion == 8 && currentAnswer == "Null@Null.com") {
 			nextQuestion +=  1;
 		};
-		if([21, 23, 25].indexOf(currentQuestion) > -1  && currentAnswer == "No"){
+		if([21, 23, 25, 43, 45, 47, 49, 51, 53, 55, 57, 59].indexOf(currentQuestion) > -1  && currentAnswer == "No"){
 			nextQuestion += 1;
 		};
 		if(currentQuestion == 33 && currentAnswer == "No"){

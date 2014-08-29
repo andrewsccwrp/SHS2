@@ -27,7 +27,8 @@ var AnswerListView = Backbone.View.extend({
 				"radio":"#aid input[type = 'radio']:checked",
 				"text":"#aid",
 				"select":"#aid",
-				"multi":"#aid input[type = 'checkbox']:checked"
+				"multi":"#aid input[type = 'checkbox']:checked",
+				"sevenday":"#aid input[type = 'checkbox']:checked"
 			},
 	saveAnswer:function(event){
 		console.log("saveAnswer");
@@ -37,7 +38,7 @@ var AnswerListView = Backbone.View.extend({
 		
 		formtype = this.model.get("type");
 		var currentAnswer = $(this.selectorString[formtype]); 
-		if(formtype == "multi") {
+		if(formtype == "multi" || formtype == "sevenday") {
 			var temparray = [];
 			currentAnswer.map(function () { temparray.push(this.value); });
 			currentAnswer = temparray.join();
@@ -82,6 +83,15 @@ var AnswerListView = Backbone.View.extend({
 		if(currentQuestion == 7 && currentAnswer == "phone") {
 			alert("phone answer");
 			nextQuestion = nextQuestion + 2;
+		};
+		if(currentQuestion == 8 && currentAnswer == "Null@Null.com") {
+			nextQuestion +=  1;
+		};
+		if([21, 23, 25].indexOf(currentQuestion) > -1  && currentAnswer == "No"){
+			nextQuestion += 1;
+		};
+		if(currentQuestion == 33 && currentAnswer == "No"){
+			nextQuestion +=  9;
 		};
 
 		// create answerDetails object
@@ -161,8 +171,9 @@ var AnswerListView = Backbone.View.extend({
 			success: function(response){
 				question = questionList.get(nq);
 				questionListView = new QuestionListView({model: question});
+				var passtoanswer = _(question.attributes).pick("type", "menu", "decline", "declinedefault");
 				questionListView.render();
-				t.render(question.attributes); // this render is called starting from the second question.
+				t.render(passtoanswer); // this render is called starting from the second question.
 						      // render is called the first time from the router
 			},
 			error: function(response){

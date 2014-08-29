@@ -193,7 +193,7 @@
 			<button id="decline" class="decline">Decline and save</button>
 			<% }; %>
     	    </div>
-	  <% } else if ((type) == "checkbox"){  %>
+	  <% } else if (type == "sevenday"){  %>
          	<label>User ID:</label>
           	<input type="text" value="<%= uid %>" disabled />
           	<label>Record ID:</label>
@@ -201,8 +201,20 @@
           	<label>Question ID:</label>
           	<input type="text" id="qid" name="qid" value="<%= qcount %>" disabled />
           	<label>Answer</label>
-	  	<input type="checkbox" id="aid" name="aid" value="HB">HB</input>
-	  	<input type="checkbox" id="aid" name="aid" value="Ocean">Ocean</input>
+		<div class="ui-field-contain" data-inset="true">
+			<fieldset data-role="controlgroup" id="aid">
+			<legend>Select all that apply: </legend>
+			<% today = new Date;
+			days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+			days = days.slice(0, today.getDate() + 1 ).reverse().concat(days.slice(todays.getDate(), 6).reverse);
+			days[0] = "Today";	
+			for(i=0; i < 7; i++) { %>
+			<input type="checkbox" class="custom" value= <%= days[i] %>  name = <%= days[i] %>  id= <%= days[i] %> />
+			<label for= <%= days[i] %> >  <%= days[i] %> </label> 
+	 		<% }; %>
+			</fieldset>
+		</div>
+        	<button id="save" class="save">Save</button>
           	<button id="save" class="save">Save</button>
 	  <% } %>
 	</script>

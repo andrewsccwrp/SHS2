@@ -10,6 +10,8 @@
 	"otype": "",
 	"check": "0,1",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "1"
   },
@@ -23,6 +25,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "2"
   },
@@ -35,6 +39,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "3"
   },
@@ -47,6 +53,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "4"
   },
@@ -59,6 +67,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "5"
   },
@@ -71,6 +81,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "yes",
+	"declinedefault": "999-999-9999",
       	"status": "incomplete",
       	"id": "6"
   },
@@ -78,11 +90,13 @@
 	"title": "The study will send you a weekly reminder to fill out a quick, 10-minute survey of your surf activity and health. Would you prefer that the study contact you primarily by phone through text messages (SMS) or by email?",
 	"action": "none",
       	"num": "q17",
-      	"type": "text",
-      	"menu": "Yes,No",
+      	"type": "select",
+      	"menu": "email,text message", 
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "7"
   },
@@ -95,6 +109,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "yes",
+	"declinedefault": "Null@Null.com",
       	"status": "incomplete",
       	"id": "8"
   },
@@ -107,6 +123,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "9"
   },
@@ -119,6 +137,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "yes",
+	"declinedefault": "999-999-9999",
       	"status": "incomplete",
       	"id": "10"
   },
@@ -131,6 +151,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "yes",
+	"declinedefault": "99999",
       	"status": "incomplete",
       	"id": "11"
   },
@@ -143,6 +165,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "12"
   },
@@ -150,11 +174,13 @@
 	"title": "About how often do you surf during the wet season (November -  March)?",
 	"action": "none",
       	"num": "q22",
-      	"type": "radio",
+      	"type": "select",
       	"menu": "Once per week,Once per month,Less than once per month", 
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "13"
   },
@@ -167,6 +193,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "14"
   },
@@ -175,10 +203,12 @@
 	"action": "none",
       	"num": "q24",
       	"type": "select",
-      	"menu": "Select a Type,Short Board (<7 feet), Fun Board (7-9 feet), Long Board (>9 feet)",
+      	"menu": "Short Board (<7 feet), Fun Board (7-9 feet), Long Board (>9 feet)",
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "15"
   },
@@ -186,11 +216,13 @@
 	"title": "Do you usually wear earplugs when you surf?",
 	"action": "none",
       	"num": "q25",
-      	"type": "text",
+      	"type": "radio",
       	"menu": "Yes,No",
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "16"
   },
@@ -198,11 +230,13 @@
 	"title": "What months of the year do you usually surf in California?",
 	"action": "none",
       	"num": "q26",
-      	"type": "text",
+      	"type": "multi",
       	"menu": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "17"
   },
@@ -211,10 +245,12 @@
 	"action": "none",
       	"num": "q27",
       	"type": "select",
-      	"menu": "Select One,Yes always wait,Yes sometimes wait,No",
+      	"menu": "Yes always wait,Yes sometimes wait,No",
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "18"
   },
@@ -227,6 +263,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "19"
   },
@@ -239,6 +277,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "20"
   },
@@ -251,6 +291,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "21"
   },
@@ -258,11 +300,13 @@
 	"title": "Which Beaches?",
 	"action": "none",
       	"num": "q29a",
-      	"type": "select",
+      	"type": "multi",
       	"menu": "Windansea,Birdrock,PB Point,Tourmaline,Pacific Beach,Mission Beach,Ocean Beach,Sunset Cliffs,Imperial Pier N&S,Other",
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "22"
   },
@@ -275,6 +319,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "23"
   },
@@ -282,11 +328,13 @@
 	"title": "Which Beach?",
 	"action": "none",
       	"num": "q210a",
-      	"type": "select",
+      	"type": "multi",
       	"menu": "Select One,Windansea,Birdrock,PB Point,Tourmaline,Pacific Beach,Mission Beach,Ocean Beach,Sunset Cliffs,Imperial Pier N&S,Other",
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "24"
   },
@@ -299,6 +347,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "25"
   },
@@ -306,11 +356,13 @@
 	"title": "Mark all that apply",
 	"action": "none",
       	"num": "q211a",
-      	"type": "select",
+      	"type": "multi",
       	"menu": "Swimming,Body Surfing,Body Boarding,Stand-up Paddle Boarding,Wind Surfing or Kite Boarding,Free Diving or Scuba Diving,Other",
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "26"
   },
@@ -318,7 +370,7 @@
 	"title": "Do you have any of the following long-term health conditions. (Mark all that apply)",
 	"action": "none",
       	"num": "q212",
-      	"type": "select",
+      	"type": "multi",
       	"menu": "Allergies other than drug allergies, Surfers ear, Chronic sinus problems, Chronic gastrointestinal problems such as Crohns disease or irritable bowel syndrome, Chronic respiratory diseases such as asthma or emphysema, Chronic skin problems such as psoriasis or eczema",
         "other": "n",
 	"otype": "",
@@ -329,10 +381,12 @@
 	"action": "none",
       	"num": "q51",
       	"type": "select",
-      	"menu": "Select One,Female,Male",
+      	"menu": "Female,Male",
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "28"
   },
@@ -345,6 +399,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "yes",
+	"declinedefault": "1900",
       	"status": "incomplete",
       	"id": "29"
   },
@@ -353,10 +409,12 @@
 	"action": "none",
       	"num": "q53",
       	"type": "select",
-      	"menu": "Select One,Less than high school,High school,Trade school/community college/other 2-year college,Bachelor degree or other professional degree (MA/MS/ME/MPH/JD/etc...),Doctoral degree (MD/PhD),Refused,Dont know/not sure",
+      	"menu": "Less than high school,High school,Trade school/community college/other 2-year college,Bachelor degree or other professional degree (MA/MS/ME/MPH/JD/etc...),Doctoral degree (MD/PhD),Refused,Dont know/not sure",
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "30"
   },
@@ -369,6 +427,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "31"
   },
@@ -381,6 +441,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "32"
   },
@@ -393,6 +455,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "33"
   },
@@ -405,6 +469,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "34"
   },
@@ -417,6 +483,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "35"
   },
@@ -429,6 +497,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "36"
   },
@@ -441,6 +511,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "37"
   },
@@ -453,6 +525,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "38"
   },
@@ -465,6 +539,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "39"
   },
@@ -477,6 +553,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "40"
   },
@@ -489,6 +567,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "41"
   },
@@ -501,6 +581,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "42"
   },
@@ -513,6 +595,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "43"
   },
@@ -525,6 +609,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "44"
   },
@@ -537,6 +623,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "45"
   },
@@ -549,6 +637,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "46"
   },
@@ -561,6 +651,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "47"
   },
@@ -573,6 +665,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "48"
   },
@@ -585,6 +679,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "49"
   },
@@ -597,6 +693,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "50"
   },
@@ -609,6 +707,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "51"
   },
@@ -621,6 +721,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "52"
   },
@@ -633,6 +735,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "53"
   },
@@ -645,6 +749,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "54"
   },
@@ -657,6 +763,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "55"
   },
@@ -669,6 +777,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "56"
   },
@@ -681,6 +791,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "57"
   },
@@ -693,6 +805,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "58"
   },
@@ -705,6 +819,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "59"
   },
@@ -717,6 +833,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "60"
   },
@@ -729,6 +847,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "61"
   },
@@ -741,6 +861,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "62"
   },
@@ -753,6 +875,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "62"
   },
@@ -765,6 +889,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "63"
   },
@@ -777,6 +903,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "63"
   },
@@ -789,6 +917,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "64"
   },
@@ -801,6 +931,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "64"
   },
@@ -813,6 +945,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "65"
   },
@@ -825,6 +959,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "66"
   },
@@ -837,6 +973,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "67"
   },
@@ -849,6 +987,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "68"
   },
@@ -861,6 +1001,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "69"
   },
@@ -873,6 +1015,8 @@
         "other": "n",
 	"otype": "",
   	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
       	"status": "incomplete",
       	"id": "70"
   }

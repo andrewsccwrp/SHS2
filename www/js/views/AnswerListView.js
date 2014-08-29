@@ -11,30 +11,47 @@ var AnswerListView = Backbone.View.extend({
 	},
 	events:{
 		//"change":"change",
-		"click .save":"saveAnswer"
+		"click .save":"saveAnswer",
+    		"click .decline":"declineAnswer"
 	},
 	change:function(event){
 		//console.log("changing "+ target.id + ' from: ' + target.defaultValue +'"');
 		console.log("change");
 	},
+    	declineAnswer:function(event){
+		formtype = this.model.get("type");
+		$(this.selectorString[formtype]).val(this.model.get("declinedefault"));
+		this.saveAnswer(event);
+	},
+	selectorString: {
+				"radio":"#aid input[type = 'radio']:checked",
+				"text":"#aid",
+				"select":"#aid",
+				"multi":"#aid input[type = 'checkbox']:checked"
+			},
 	saveAnswer:function(event){
 		console.log("saveAnswer");
 		var timer = 0;
 		var appID;
 		var that = this;
-		// create answerDetails object
-		//console.log("changing "+ target.id + ' from: ' + target.defaultValue +'"');
-		// current answer
-		//console.log(this.model.get("qcount"));
 		var currentAnswer = $('#aid').val();
-		//console.log("currentAnswer: "+ currentAnswer);
+		formtype = this.model.get("type");
+		var currentAnswer = $(this.selectorString[formtype]); 
+		if(formtype == "multi") {
+			var temparray = [];
+			currentAnswer.map(function () { temparray.push(this.value); });
+			currentAnswer = temparray.join();
+		} else {
+			currentAnswer = currentAnswer.val();
+		};
+		console.log("currentAnswer: "+ currentAnswer);
 		// current question
 		// too slow
-		//var currentQuestion = Number(this.model.get("qcount")); 
+		var currentQuestion = Number(this.model.get("qcount")); 
 		//console.log("currentQuestion: "+ currentQuestion);
 		appID = Number(this.model.get("id")); 
 		//console.log("appID: "+ appID);
-		var currentQuestion = (Number($('#qid').val()));
+		//var currentQuestion = (Number($('#qid').val()));
 		// next question  
 		var nextQuestion = (currentQuestion + 1);
 		// storing userid email and phone
@@ -66,6 +83,7 @@ var AnswerListView = Backbone.View.extend({
 		}
 		var answerDetails = {};
 		answerDetails["q"+currentQuestion] = currentAnswer;
+		this.model.set("q"+currentQuestion, currentAnswer);
 		answerDetails.qcount = nextQuestion;
 		// either set or save here
 		//this.model.save({q1: "test"}, { 
@@ -129,20 +147,6 @@ var AnswerListView = Backbone.View.extend({
 	       				console.log(response.statusText);
        				}
 			});
-			//} // close else
-			//} // timer if - remove to enable module save
-			// last module - go to receipt
-			//this.getQuestion(nextQuestion);
-			// call lookup after database save
-			//app.lookup();
-			// set/save telephone/email fields to database
-			// when finished with all questions check users record in database and present to viewer
-			// then send user an email notification welcoming them to the study
-			//app.receipt();
-			//app.notify();
-			//appRouter.navigate('shs2/question/' + appID + '/' + nextQuestion, {trigger: true});
-			/* set timer back to 0 */
-			//timer = 0;
 		}, /* end saveAnswer */
 	getQuestion: function(t,nq){
 		//console.log("getQuestion");
@@ -151,11 +155,9 @@ var AnswerListView = Backbone.View.extend({
 	     	questionList.fetch({
 			success: function(response){
 				question = questionList.get(nq);
-				var type = question.attributes.type;
-				var menu = question.attributes.menu.split(","); //menu options in JSON are in one string
 				questionListView = new QuestionListView({model: question});
 				questionListView.render();
-				t.render(type, menu); // this render is called starting from the second question.
+				t.render(question.attributes); // this render is called starting from the second question.
 						      // render is called the first time from the router
 			},
 			error: function(response){
@@ -163,15 +165,19 @@ var AnswerListView = Backbone.View.extend({
 			}
 		});
 	},
-	render: function(form_type, menu_opts){
+	render: function(question_opts){
 		//this is to substitute in menu options for the the first question when sent from the router
-		if(menu_opts == "test") { 
-			menu_opts = ['Yes', 'No'];
+		if(question_opts == "default") { 
+			question_opts = {"type": 'radio',
+				"menu": 'Yes,No',
+				"decline":"no"};
 		};
+		question_opts.menu = question_opts.menu.split(","); //menu options in JSON are in one string
 		$(this.el).html("");
-		this.model.set({"type":form_type, "menu":menu_opts});
-		$(this.el).html(this.template(this.model.toJSON()));	
+		this.model.set(question_opts);
+		$(this.el).html(this.template(this.model.toJSON()));
 		$('#multi-radio').trigger('create');
+		$("input[type='checkbox']").checkboxradio();
 		return this;
 	}
 });

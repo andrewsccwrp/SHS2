@@ -67,7 +67,7 @@ var AnswerListView = Backbone.View.extend({
 			});
 		}
                 // logic for skipping certain questions
-		if(currentQuestion == 7 && currentAnswer == "phone") {
+		if(currentQuestion == 7 && currentAnswer == "text") {
 			nextQuestion = nextQuestion + 2;
 		}
 		if(currentQuestion == 8){

@@ -22,6 +22,7 @@ var AnswerListView = Backbone.View.extend({
 		var timer = 0;
 		var appID;
 		var that = this;
+		// create answerDetails object
 		//console.log("changing "+ target.id + ' from: ' + target.defaultValue +'"');
 		// current answer
 		//console.log(this.model.get("qcount"));
@@ -36,7 +37,6 @@ var AnswerListView = Backbone.View.extend({
 		var currentQuestion = (Number($('#qid').val()));
 		// next question  
 		var nextQuestion = (currentQuestion + 1);
-
 		// storing userid email and phone
 		if(currentQuestion == 6){
 			user.save({ phone: currentAnswer }, {
@@ -49,6 +49,10 @@ var AnswerListView = Backbone.View.extend({
 				}
 			});
 		}
+                // logic for skipping certain questions
+		if(currentQuestion == 7 && currentAnswer == "phone") {
+			nextQuestion = nextQuestion + 2;
+		}
 		if(currentQuestion == 8){
 			user.save({ email: currentAnswer }, {
 				wait: true,
@@ -60,17 +64,9 @@ var AnswerListView = Backbone.View.extend({
 				}
 			});
 		}
-                // logic for skipping certain questions
-		if(currentQuestion == 7 && currentAnswer == "phone") {
-			alert("phone answer");
-			nextQuestion = nextQuestion + 2;
-		};
-
-		// create answerDetails object
-		answerDetails = {};
+		var answerDetails = {};
 		answerDetails["q"+currentQuestion] = currentAnswer;
 		answerDetails.qcount = nextQuestion;
-			
 		// either set or save here
 		//this.model.save({q1: "test"}, { 
 		//this.model.set(answerDetails, {validate:true});

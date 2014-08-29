@@ -120,38 +120,29 @@ var app = {
 		appRouter.start();
 	}
   },
-  lookup: function(p){
-	var url = 'http://data.sccwrp.org/shs2/lookup.php';
-	//var p = "15625727718";
-	message = $.ajax({
+  xhr_get: function(url,indata){
+	return $.ajax({
 		type: 'GET',
 		url: url,
 		contentType: "application/json",
 		dataType: 'jsonp',
-		data: {pp: p},
-		crossDomain: true,
-		timeout: 4000,
-		error: function(x,t,m){ 
-			 if(t==="timeout"){ alert("Data not Submitted"); }
-		}, 
-		success: function(data) {
-			//alert("status:"+data.status[0]);
-			//alert("number:"+data.number[0]);
-			//lookup_number = data.number[0];
-			//return lookup_number;
-			lookup_success(data);
-		},
-		complete: function(data) {
-			//alert("complete:"+data.key);
-	        }
-    	});
+		data: {generic: indata},
+		crossDomain: true
+		//beforeSend: loader
+	})
+	.always(function(){
+		// loader
+	})
+	.fail(function(){
+		// failures
+	});
   },
   notify: function(e){
 	alert("app.notify");
 	alert(e)
 	var url = 'http://data.sccwrp.org/shs2/email.php';
 	//var p = "15625727718";
-	message = $.ajax({
+	var message = $.ajax({
 		type: 'GET',
 		url: url,
 		contentType: "application/json",

@@ -166,22 +166,26 @@ var AnswerListView = Backbone.View.extend({
 			});
 		}, /* end saveAnswer */
 	getQuestion: function(t,nq){
-		//console.log("getQuestion");
-     		//console.log(t.model.get("id"));
-	     	var questionList = new QuestionList();
-	     	questionList.fetch({
-			success: function(response){
-				question = questionList.get(nq);
-				questionListView = new QuestionListView({model: question});
-				var passtoanswer = _(question.attributes).pick("type", "menu", "decline", "declinedefault");
-				questionListView.render();
-				t.render(passtoanswer); // this render is called starting from the second question.
-						      // render is called the first time from the router
-			},
-			error: function(response){
-				console.log("questionList Failed");
-			}
-		});
+		// go to receipt if finished with last question
+		if(nq > MAXQUESTION) {
+			appRouter.receipt();
+		} else {
+	     		var questionList = new QuestionList();
+	     		questionList.fetch({
+				success: function(response){
+					question = questionList.get(nq);
+					questionListView = new QuestionListView({model: question});
+					var passtoanswer = _(question.attributes).pick("type", "menu", "decline", "declinedefault");
+					questionListView.render();
+					// this render is called starting from the second question.
+					// render is called the first time from the router
+					t.render(passtoanswer);
+				},
+				error: function(response){
+					console.log("questionList Failed");
+				}
+			});
+		};
 	},
 	render: function(question_opts){
 		//this is to substitute in menu options for the the first question when sent from the router

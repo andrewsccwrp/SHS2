@@ -5,3 +5,12 @@ var networkStatus;
 var SESSIONID = +new Date;
 var USERID;
 var user;
+(function(){
+	$.getJSON("questions.json").done(function(qjson){
+		var idlist = [];
+		for(i in qjson) {
+			idlist.push(Number(qjson[i].id));
+		};
+		 MAXQUESTIONS = Math.max.apply(null, idlist);
+	});
+}());

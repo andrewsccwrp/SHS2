@@ -11,6 +11,6 @@ var user;
 		for(i in qjson) {
 			idlist.push(Number(qjson[i].id));
 		};
-		 MAXQUESTIONS = Math.max.apply(null, idlist);
+		 MAXQUESTION = Math.max.apply(null, idlist);
 	});
 }());

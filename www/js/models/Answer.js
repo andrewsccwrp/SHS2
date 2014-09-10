@@ -16,3 +16,18 @@ var Answer = Backbone.Model.extend({
 		if(!_.isEmpty(errors)) return errors;
 	}
 });
+
+function makeValidator(questions) {
+	var valLU= {};
+	var valFuncs = {};
+	var qids = {};
+	for(qid in questions) {
+		var q = "q" + qid;
+		qids.push(q);
+		valLU[q] = questions[qid].validation.split(",");
+		valFuncs[q] = valLU[q].map(function() { return validators[this]; });
+	};
+	return function (attr) {
+		
+	};
+};

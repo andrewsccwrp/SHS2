@@ -12,6 +12,7 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "We are sorry, but we are only enrolling surfers who speak English.",
       	"status": "incomplete",
       	"id": "1"
   },
@@ -27,6 +28,7 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "We are sorry, but we are only enrolling surfers are 18 years or older.",
       	"status": "incomplete",
       	"id": "2"
   },
@@ -41,6 +43,7 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "We are sorry, but we are only enrolling surfers who plan to surf in California in the next 3 months.",
       	"status": "incomplete",
       	"id": "3"
   },
@@ -55,6 +58,7 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "We are sorry, but we are only enrolling surfers who have internet access, because the study will rely on reporting through the web.",
       	"status": "incomplete",
       	"id": "4"
   },
@@ -64,27 +68,74 @@
       	"num": "q15",
       	"type": "radio",
       	"menu": "Yes,No",
+        "other": "y",
+	"otype": "info",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "We are sorry, but we are only enrolling surfer who speak English, are 18 years or older, are California residents, plan to surf in the next 3 months, and have internet access.",
+      	"status": "incomplete",
+      	"id": "5"
+  },
+  {
+	"title": "Please enter your primary phone number and email address where we can reach you (mobile phone preferred). This information remains completely confidential. We collect this information only so we can contact you if needed during the study. We will never share this information with anybody and will destroy this information at the end of the study. - Please enter your phone number",
+	"action": "none",
+      	"num": "q16a",
+      	"type": "text",
+      	"menu": "",
         "other": "n",
 	"otype": "",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "5"
+      	"id": "6"
   },
   {
-	"title": "Can you give me your primary phone number (mobile phone preferred)?  This information remains completely confidential. We collect this information only so we can contact you if needed during the study. We will never share this information with anybody and will destroy this information at the end of the study (Enter 999-999-9999 if declined)",
+	"title": "Please re-enter your phone number (to confirm)",
 	"action": "none",
-      	"num": "q16",
+      	"num": "q16b",
       	"type": "text",
-      	"menu": "Yes,No",
+      	"menu": "",
         "other": "n",
 	"otype": "",
   	"answer": "",
-	"decline": "yes",
-	"declinedefault": "999-999-9999",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "6"
+      	"id": "7"
+  },
+  {
+	"title": "Please enter your email address",
+	"action": "none",
+      	"num": "q16c",
+      	"type": "text",
+      	"menu": "",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "8"
+  },
+  {
+	"title": "Please re-enter your email address (to confirm)",
+	"action": "none",
+      	"num": "q16d",
+      	"type": "text",
+      	"menu": "",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "9"
   },
   {
 	"title": "The study will send you a weekly reminder to fill out a quick, 10-minute survey of your surf activity and health. Would you prefer that the study contact you primarily by phone through text messages (SMS) or by email?",
@@ -97,106 +148,84 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "7"
+      	"id": "10"
   },
   {
-	"title": "Please enter your email address where you would like us to contact you (Enter Null@Null.com if declined)",
+	"title": "How did you hear about the study?",
 	"action": "none",
-      	"num": "q17a",
-      	"type": "text",
-      	"menu": "Yes,No",
-        "other": "n",
-	"otype": "",
+      	"num": "q18",
+      	"type": "select",
+      	"menu": "Surfrider Foundation website,Surfrider Foundation email announcement,Flier posted at the beach,Flier posted at my local surf shop,Talked with a study representative on the beach,Friends/word of mouth,Other",
+        "other": "y",
+	"otype": "text",
   	"answer": "",
-	"decline": "yes",
-	"declinedefault": "Null@Null.com",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "8"
+      	"id": "11"
   },
   {
-	"title": "Please confirm your email address (Enter Null@Null.com if declined)",
+	"title": "What is your Zip Code?",
 	"action": "none",
-      	"num": "q17b",
+      	"num": "q19",
       	"type": "text",
-      	"menu": "Yes,No",
+      	"menu": "",
         "other": "n",
 	"otype": "",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "9"
-  },
-  {
-	"title": "Do you have a secondary phone number, such as a landline, where we can reach you? (Enter 999-999-9999 if declined)",
-	"action": "none",
-      	"num": "q18",
-      	"type": "text",
-      	"menu": "Yes,No",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "yes",
-	"declinedefault": "999-999-9999",
-      	"status": "incomplete",
-      	"id": "10"
-  },
-  {
-	"title": "What is your Zip Code? (enter 88888 if refused; enter 99999 if unknown)",
-	"action": "none",
-      	"num": "q19",
-      	"type": "text",
-      	"menu": "Yes,No",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "yes",
-	"declinedefault": "99999",
-      	"status": "incomplete",
-      	"id": "11"
+      	"id": "12"
   },
   {
 	"title": "How many years have you surfed?",
 	"action": "none",
       	"num": "q21",
-      	"type": "text",
-      	"menu": "Yes,No",
+      	"type": "select",
+      	"menu": "1,2,3,4,5,6,7,8,9,10",
         "other": "n",
 	"otype": "",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "12"
+      	"id": "13"
   },
   {
 	"title": "About how often do you surf during the wet season (November -  March)?",
 	"action": "none",
       	"num": "q22",
-      	"type": "select",
-      	"menu": "Once per week,Once per month,Less than once per month", 
+      	"type": "weekmonthtime",
+	"menu": "{'per week':[1,2,3,4,5],'per month':[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]}",
         "other": "n",
 	"otype": "",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "13"
+      	"id": "14"
   },
   {
 	"title": "About how often do you surf during the dry season (April -  October)?",
 	"action": "none",
       	"num": "q23",
-      	"type": "select",
-      	"menu": "Once per week,Once per month,Less than once per month",
+      	"type": "weekmonthtime",
+	"menu": "{'per week':[1,2,3,4,5],'per month':[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]}",
         "other": "n",
 	"otype": "",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "14"
+      	"id": "15"
   },
   {
 	"title": "How long is the board you usually ride?",
@@ -209,8 +238,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "15"
+      	"id": "16"
   },
   {
 	"title": "Do you usually wear earplugs when you surf?",
@@ -223,8 +253,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "16"
+      	"id": "17"
   },
   {
 	"title": "What months of the year do you usually surf in California?",
@@ -237,8 +268,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "17"
+      	"id": "18"
   },
   {
 	"title": "If it rains, do you ever wait to go in the ocean?",
@@ -251,22 +283,24 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "18"
+      	"id": "19"
   },
   {
 	"title": "How long do you typically wait?",
 	"action": "none",
       	"num": "q27a",
-      	"type": "text",
-      	"menu": "",
+      	"type": "dayshourstime",
+	"menu": "{'Days':[1,2,3,4,5,6,7],'Hours':[1,2,3,4,5,6,7,8,9,10,11,12]}",
         "other": "n",
 	"otype": "",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "19"
+      	"id": "20"
   },
   {
 	"title": "During the winter season (November - March), which beach do you consider your home beach (where you surf most often)?",
@@ -274,69 +308,14 @@
       	"num": "q28",
       	"type": "select",
       	"menu": "Select One,Windansea,Birdrock,PB Point,Tourmaline,Pacific Beach,Mission Beach,Ocean Beach,Sunset Cliffs,Imperial Pier N&S,Other",
-        "other": "n",
-	"otype": "",
+        "other": "y",
+	"otype": "text",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
-      	"status": "incomplete",
-      	"id": "20"
-  },
-  {
-	"title": "Do you regularly surf other beaches during the winter?",
-	"action": "none",
-      	"num": "q29",
-      	"type": "radio",
-      	"menu": "Yes,No",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "no",
-	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
       	"id": "21"
-  },
-  {
-	"title": "Which Beaches?",
-	"action": "none",
-      	"num": "q29a",
-      	"type": "multi",
-      	"menu": "Windansea,Birdrock,PB Point,Tourmaline,Pacific Beach,Mission Beach,Ocean Beach,Sunset Cliffs,Imperial Pier N&S,Other",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "no",
-	"declinedefault": "",
-      	"status": "incomplete",
-      	"id": "22"
-  },
-  {
-	"title": "Do you have a different home beach during the summer season (April - October)?",
-	"action": "none",
-      	"num": "q210",
-      	"type": "radio",
-      	"menu": "Yes,No",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "no",
-	"declinedefault": "",
-      	"status": "incomplete",
-      	"id": "23"
-  },
-  {
-	"title": "Which Beach?",
-	"action": "none",
-      	"num": "q210a",
-      	"type": "multi",
-      	"menu": "Select One,Windansea,Birdrock,PB Point,Tourmaline,Pacific Beach,Mission Beach,Ocean Beach,Sunset Cliffs,Imperial Pier N&S,Other",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "no",
-	"declinedefault": "",
-      	"status": "incomplete",
-      	"id": "24"
   },
   {
 	"title": "Do you regularly go into the ocean for activities other than surfing?",
@@ -349,8 +328,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "25"
+      	"id": "22"
   },
   {
 	"title": "Mark all that apply",
@@ -358,13 +338,14 @@
       	"num": "q211a",
       	"type": "multi",
       	"menu": "Swimming,Body Surfing,Body Boarding,Stand-up Paddle Boarding,Wind Surfing or Kite Boarding,Free Diving or Scuba Diving,Other",
-        "other": "n",
-	"otype": "",
+        "other": "y",
+	"otype": "text",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "26"
+      	"id": "23"
   },
   {
 	"title": "Do you have any of the following long-term health conditions. (Mark all that apply)",
@@ -374,77 +355,12 @@
       	"menu": "Allergies other than drug allergies, Surfers ear, Chronic sinus problems, Chronic gastrointestinal problems such as Crohns disease or irritable bowel syndrome, Chronic respiratory diseases such as asthma or emphysema, Chronic skin problems such as psoriasis or eczema",
         "other": "n",
 	"otype": "",
-      	"id": "27"
-  },
-  {
-	"title": "What is your gender?",
-	"action": "none",
-      	"num": "q51",
-      	"type": "select",
-      	"menu": "Female,Male",
-        "other": "n",
-	"otype": "",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "28"
-  },
-  {
-	"title": "What year were you born? (Enter 1900 if declined)",
-	"action": "none",
-      	"num": "q52",
-      	"type": "text",
-      	"menu": "",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "yes",
-	"declinedefault": "1900",
-      	"status": "incomplete",
-      	"id": "29"
-  },
-  {
-	"title": "What is the highest level of education that you have completed?",
-	"action": "none",
-      	"num": "q53",
-      	"type": "select",
-      	"menu": "Less than high school,High school,Trade school/community college/other 2-year college,Bachelor degree or other professional degree (MA/MS/ME/MPH/JD/etc...),Doctoral degree (MD/PhD),Refused,Dont know/not sure",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "no",
-	"declinedefault": "",
-      	"status": "incomplete",
-      	"id": "30"
-  },
-  {
-	"title": "Are you currently employed?",
-	"action": "none",
-      	"num": "q54",
-      	"type": "radio",
-      	"menu": "Yes,No",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "no",
-	"declinedefault": "",
-      	"status": "incomplete",
-      	"id": "31"
-  },
-  {
-	"title": "If you think back to your households income in 2012 which category represents the total combined income of all members of your household reported on last years tax return?",
-	"action": "none",
-      	"num": "q55",
-      	"type": "select",
-      	"menu": "Select One,< $10k,$10-15k,$15-25k,$25-35k,$35-50k,$50-75k,$75-100k,$100-150k,> $150k,Would prefer no to say/Refused,Dont know/not sure",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "no",
-	"declinedefault": "",
-      	"status": "incomplete",
-      	"id": "32"
+      	"id": "24"
   },
   {
 	"title": "Did you enter the ocean on any days in the past week?",
@@ -457,8 +373,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "33"
+      	"id": "25"
   },
   {
 	"title": "What beach did you go to?",
@@ -466,13 +383,14 @@
       	"num": "q32",
       	"type": "select",
       	"menu": "Windansea,Birdrock,PB Point,Tourmaline,Pacific Beach,Mission Beach,Ocean Beach,Sunset Cliffs,Imperial Pier N&S,Other",
-        "other": "n",
-	"otype": "",
+        "other": "y",
+	"otype": "text",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "34"
+      	"id": "26"
   },
   {
 	"title": "What was your main activity while in the ocean?",
@@ -480,13 +398,14 @@
       	"num": "q33",
       	"type": "select",
       	"menu": "Select One,Surfing,Swimming,Body Surfing,Body Boarding,Stand-up Paddle Boarding,Wind Surfing or Kite Boarding,Free diving or Scuba Diving,Other",
-        "other": "n",
-	"otype": "",
+        "other": "y",
+	"otype": "text",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "35"
+      	"id": "27"
   },
   {
 	"title": "Did you immerse your head in the water?",
@@ -499,8 +418,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "36"
+      	"id": "28"
   },
   {
 	"title": "Did you swallow any water?",
@@ -513,8 +433,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "37"
+      	"id": "29"
   },
   {
 	"title": "Did you wear earplugs?",
@@ -527,8 +448,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "38"
+      	"id": "30"
   },
   {
 	"title": "Did you wear a wetsuit?",
@@ -541,36 +463,24 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "39"
+      	"id": "31"
   },
   {
-	"title": "Approximately when did you enter the ocean?",
+	"title": "Approximately when did you enter/exit the ocean?",
 	"action": "none",
-      	"num": "q38a",
-      	"type": "text",
-      	"menu": "",
+      	"num": "q38",
+      	"type": "enterexit",
+	"menu": "{'Hour':[1,2,3,4,5,6,7,8,9,10,11,12],'Minutes':[00,15,30,45],'Clock':['AM','PM']}",
         "other": "n",
 	"otype": "",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "40"
-  },
-  {
-	"title": "Approximately when did you exit the ocean?",
-	"action": "none",
-      	"num": "q38b",
-      	"type": "text",
-      	"menu": "",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "no",
-	"declinedefault": "",
-      	"status": "incomplete",
-      	"id": "41"
+      	"id": "32"
   },
   {
 	"title": "Were there any days in the past week that you would have gone into the ocean but didnt because of wet weather or bad weather?",
@@ -583,8 +493,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "42"
+      	"id": "33"
   },
   {
 	"title": "Did you have a fever in the last 7 days?",
@@ -597,8 +508,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "43"
+      	"id": "34"
   },
   {
 	"title": "Which days?",
@@ -611,8 +523,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "44"
+      	"id": "35"
   },
   {
 	"title": "Did you have diarrhea (3 or more loose/watery stools in 24 hours) in the last 7 days?",
@@ -625,8 +538,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "45"
+      	"id": "36"
   },
   {
 	"title": "Which days?",
@@ -639,8 +553,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "46"
+      	"id": "37"
   },
   {
 	"title": "Did you have stomach cramps in the last 7 days?",
@@ -653,8 +568,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "47"
+      	"id": "38"
   },
   {
 	"title": "Which days?",
@@ -667,8 +583,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "48"
+      	"id": "39"
   },
   {
 	"title": "Did you have vomiting in the last 7 days?",
@@ -681,8 +598,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "49"
+      	"id": "40"
   },
   {
 	"title": "Which days?",
@@ -695,8 +613,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "50"
+      	"id": "41"
   },
   {
 	"title": "Did you have nausea in the last 7 days?",
@@ -709,8 +628,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "51"
+      	"id": "42"
   },
   {
 	"title": "Which days?",
@@ -723,8 +643,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "52"
+      	"id": "43"
   },
   {
 	"title": "Did you have sinus pain or sinus infection in the last 7 days?",
@@ -737,8 +658,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "53"
+      	"id": "44"
   },
   {
 	"title": "Which days?",
@@ -751,8 +673,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "54"
+      	"id": "45"
   },
   {
 	"title": "Did you have earache, ear infection, or running nose in the last 7 days?",
@@ -765,8 +688,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "55"
+      	"id": "46"
   },
   {
 	"title": "Which days?",
@@ -779,8 +703,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "56"
+      	"id": "47"
   },
   {
 	"title": "Did you have an eye infection in the last 7 days?",
@@ -793,8 +718,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "57"
+      	"id": "48"
   },
   {
 	"title": "Which days?",
@@ -807,11 +733,12 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "58"
+      	"id": "49"
   },
   {
-	"title": "Did you have heart burn or acid reflux in the last 7 days?",
+	"title": "Negative Control 1",
 	"action": "none",
       	"num": "q49",
       	"type": "radio",
@@ -821,8 +748,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "59"
+      	"id": "50"
   },
   {
 	"title": "Which days?",
@@ -835,11 +763,12 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "60"
+      	"id": "51"
   },
   {
-	"title": "Did you have a minor injury unrelated to surfing (e.g. twisted ankle, twisted knee, scrape or cut) in the last 7 days?",
+	"title": "Negative Control 2",
 	"action": "none",
       	"num": "q410",
       	"type": "radio",
@@ -849,8 +778,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "61"
+      	"id": "52"
   },
   {
 	"title": "Which days?",
@@ -863,8 +793,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "62"
+      	"id": "53"
   },
   {
 	"title": "Did you have an infected cut in the last 7 days?",
@@ -877,8 +808,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "62"
+      	"id": "54"
   },
   {
 	"title": "Which days?",
@@ -891,8 +823,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "63"
+      	"id": "55"
   },
   {
 	"title": "Did you have a skin rash, itchy skin, or skin infection in the last 7 days?",
@@ -905,8 +838,9 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "63"
+      	"id": "56"
   },
   {
 	"title": "Which days?",
@@ -919,11 +853,12 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "64"
+      	"id": "57"
   },
   {
-	"title": "Did anybody else who lives in your house come down with the same symptoms before or about the same time as you?",
+	"title": "Did you have a cough?",
 	"action": "none",
       	"num": "q413",
       	"type": "radio",
@@ -933,11 +868,27 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "64"
+      	"id": "58"
   },
   {
-	"title": "Since last sevenDaysAgoFunction, do you suspect that you or anybody in your home might have had food poisoning?",
+	"title": "Which days?",
+	"action": "none",
+      	"num": "q413ag",
+      	"type": "sevenday",
+      	"menu": "",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "59"
+  },
+  {
+	"title": "Did you have a sore throat?",
 	"action": "none",
       	"num": "q414",
       	"type": "radio",
@@ -947,25 +898,57 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "65"
+      	"id": "60"
   },
   {
-	"title": "Since last sevenDaysAgoFunction, did you miss work, school, or other daily activities because of any of the sympt    oms above? If so, how many days in the past week? (Record 0 if no days missed)",
+	"title": "Which days?",
+	"action": "none",
+      	"num": "q414ag",
+      	"type": "sevenday",
+      	"menu": "",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "61"
+  },
+  {
+	"title": "Did you have runny nose/congestion?",
 	"action": "none",
       	"num": "q415",
-      	"type": "text",
+      	"type": "radio",
       	"menu": "Yes,No",
         "other": "n",
 	"otype": "",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "66"
+      	"id": "62"
   },
   {
-	"title": "Since last sevenDaysAgoFunction, did you seek medical care from a clinic or hospital for any of the symptoms above?",
+	"title": "Which days?",
+	"action": "none",
+      	"num": "q415ag",
+      	"type": "sevenday",
+      	"menu": "",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "63"
+  },
+  {
+	"title": "Did anybody else who lives in your house come down with the same symptoms before or about the same time as you?",
 	"action": "none",
       	"num": "q416",
       	"type": "radio",
@@ -975,11 +958,12 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "67"
+      	"id": "64"
   },
   {
-	"title": "Since last sevenDaysAgoFunction, did you take medication such as painkillers or antibiotics for any of the symptoms above?",
+	"title": "Since last sevenDaysAgoFunction, do you suspect that you or anybody in your home might have had food poisoning?",
 	"action": "none",
       	"num": "q417",
       	"type": "radio",
@@ -989,25 +973,27 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "68"
+      	"id": "65"
   },
   {
-	"title": "Since last sevenDaysAgoFunction, did you avoid entering the ocean because of your symptoms?",
+	"title": "Since last sevenDaysAgoFunction, did you miss work, school, or other daily activities because of any of the sympt    oms above? If so, how many days in the past week? (Record 0 if no days missed)",
 	"action": "none",
       	"num": "q418",
-      	"type": "radio",
+      	"type": "text",
       	"menu": "Yes,No",
         "other": "n",
 	"otype": "",
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
-      	"id": "69"
+      	"id": "66"
   },
   {
-	"title": "Since last sevenDaysAgoFunction, did you avoid entering the ocean because of any illness not covered by the symptoms above?",
+	"title": "Since last sevenDaysAgoFunction, did you seek medical care from a clinic or hospital for any of the symptoms above?",
 	"action": "none",
       	"num": "q419",
       	"type": "radio",
@@ -1017,7 +1003,128 @@
   	"answer": "",
 	"decline": "no",
 	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "67"
+  },
+  {
+	"title": "Since last sevenDaysAgoFunction, did you take medication such as painkillers or antibiotics for any of the symptoms above?",
+	"action": "none",
+      	"num": "q420",
+      	"type": "radio",
+      	"menu": "Yes,No",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "68"
+  },
+  {
+	"title": "Since last sevenDaysAgoFunction, did you avoid entering the ocean because of your symptoms?",
+	"action": "none",
+      	"num": "q421",
+      	"type": "radio",
+      	"menu": "Yes,No",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "69"
+  },
+  {
+	"title": "Since last sevenDaysAgoFunction, did you avoid entering the ocean because of any illness not covered by the symptoms above?",
+	"action": "none",
+      	"num": "q422",
+      	"type": "radio",
+      	"menu": "Yes,No",
+        "other": "y",
+	"otype": "info",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
       	"status": "incomplete",
       	"id": "70"
+  },
+  {
+	"title": "What is your gender?",
+	"action": "none",
+      	"num": "q51",
+      	"type": "select",
+      	"menu": "Female,Male",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "71"
+  },
+  {
+	"title": "What year were you born? (Enter 1900 if declined)",
+	"action": "none",
+      	"num": "q52",
+      	"type": "text",
+      	"menu": "",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "yes",
+	"declinedefault": "1900",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "72"
+  },
+  {
+	"title": "What is the highest level of education that you have completed?",
+	"action": "none",
+      	"num": "q53",
+      	"type": "select",
+      	"menu": "Less than high school,High school,Trade school/community college/other 2-year college,Bachelor degree or other professional degree (MA/MS/ME/MPH/JD/etc...),Doctoral degree (MD/PhD),Refused,Dont know/not sure",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "73"
+  },
+  {
+	"title": "Are you currently employed?",
+	"action": "none",
+      	"num": "q54",
+      	"type": "radio",
+      	"menu": "Yes,No",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "74"
+  },
+  {
+	"title": "If you think back to your households income in 2013 which category represents the total combined income of all members of your household reported on last years tax return?",
+	"action": "none",
+      	"num": "q55",
+      	"type": "select",
+      	"menu": "Select One,< $10k,$10-15k,$15-25k,$25-35k,$35-50k,$50-75k,$75-100k,$100-150k,> $150k,Would prefer no to say/Refused,Dont know/not sure",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "75"
   }
 ]

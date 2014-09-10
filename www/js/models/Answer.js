@@ -17,17 +17,51 @@ var Answer = Backbone.Model.extend({
 	}
 });
 
-function makeValidator(questions) {
-	var valLU= {};
-	var valFuncs = {};
-	var qids = {};
-	for(qid in questions) {
-		var q = "q" + qid;
-		qids.push(q);
-		valLU[q] = questions[qid].validation.split(",");
-		valFuncs[q] = valLU[q].map(function() { return validators[this]; });
-	};
-	return function (attr) {
-		
-	};
+var validationFuncs = {
+	notNull: function(q) {if(q && q == "") return "A response is required before continuing";},
+	phoneLength: function(q) {if(q && q.length < 2) return "Invalid phone number";} 
 };
+
+/*
+function makeValidator() {
+	// First, create validation look up object
+	var questions = {};
+	(function() {
+		$.ajax({
+			url:"questions.json",
+			dataType: 'json',
+			async: false,
+			success: function(qjson){
+				questions = qjson;
+			})
+	}());
+	var valLU = {};
+	for(i=0; i < MAXQUESTION; i++) {
+		var vs = questions[i].checks.split(",");
+		// add validation checks to function array
+		valLU["q" + i]  = vs.map(function (v) {return validationFuncs[v];});
+		// add default validator, if one is needed
+		if(questions[i].errmessage != "") {
+			var defaultvalid= function () {
+				var msg = questions[i].errmessage;	
+				return function(q) {if(q && q == "no") return msg;};
+			}();
+			valLU["q" + i].push(defaultvalid); 
+		};	
+	};	
+	// Return function closure that references LU object
+	return function(attrs) {
+		var errors = [];
+		for(key in valLU) {
+			var err = valLU[key].map(function(f) {return f(attrs[key]);});
+			err.each(function(e) {
+				if(e) {
+					errors.push(e);
+			}});
+		};
+		if(errors.length > 0) return errors;
+	};	
+};
+
+var validator = makeValidator();
+*/

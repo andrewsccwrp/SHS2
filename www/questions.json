@@ -198,6 +198,21 @@
       	"id": "13"
   },
   {
+	"title": "Thinking back over the past year, in which months did you surf in California?",
+	"action": "none",
+      	"num": "q26",
+      	"type": "multi",
+      	"menu": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
+        "other": "n",
+	"otype": "",
+  	"answer": "",
+	"decline": "no",
+	"declinedefault": "",
+	"errmessage": "",
+      	"status": "incomplete",
+      	"id": "14"
+  },
+  {
 	"title": "About how often do you surf during the wet season (November -  March)?",
 	"action": "none",
       	"num": "q22",
@@ -210,7 +225,7 @@
 	"declinedefault": "",
 	"errmessage": "",
       	"status": "incomplete",
-      	"id": "14"
+      	"id": "15"
   },
   {
 	"title": "About how often do you surf during the dry season (April -  October)?",
@@ -225,7 +240,7 @@
 	"declinedefault": "",
 	"errmessage": "",
       	"status": "incomplete",
-      	"id": "15"
+      	"id": "16"
   },
   {
 	"title": "How long is the board you usually ride?",
@@ -240,7 +255,7 @@
 	"declinedefault": "",
 	"errmessage": "",
       	"status": "incomplete",
-      	"id": "16"
+      	"id": "17"
   },
   {
 	"title": "Do you usually wear earplugs when you surf?",
@@ -248,21 +263,6 @@
       	"num": "q25",
       	"type": "radio",
       	"menu": "Yes,No",
-        "other": "n",
-	"otype": "",
-  	"answer": "",
-	"decline": "no",
-	"declinedefault": "",
-	"errmessage": "",
-      	"status": "incomplete",
-      	"id": "17"
-  },
-  {
-	"title": "What months of the year do you usually surf in California?",
-	"action": "none",
-      	"num": "q26",
-      	"type": "multi",
-      	"menu": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
         "other": "n",
 	"otype": "",
   	"answer": "",

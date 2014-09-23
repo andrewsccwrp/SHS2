@@ -3,25 +3,19 @@
     <title>Surfer Health Survey</title>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- 
-	<link rel="stylesheet" href="css/orig/web.css" type="text/css" />
-	<link rel="stylesheet" href="css/orig/natived/font-awesome.min.css" />
-                // jQueryMobileCSS - original without styling 
+ 
+	<link rel="stylesheet" href="css/orig/web.css" type="text/css" /> 
+	<link rel="stylesheet" href="css/orig/natived/font-awesome.min.css" /> 
         <link rel="stylesheet" href="css/orig/natived/jquerymobile.css" />
-                // nativeDroid core CSS 
         <link rel="stylesheet" href="css/orig/natived/jquerymobile.nativedroid.css" />
-                // nativeDroid: Light/Dark 
         <link rel="stylesheet" href="css/orig/natived/jquerymobile.nativedroid.dark.css"/>
-                // nativeDroid: Color Schemes 
         <link rel="stylesheet" href="css/orig/natived/jquerymobile.nativedroid.color.blue.css" />
-		// new native stylesheet
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
         <link rel="stylesheet" href="css/jqm-icon-pack-fa.css" /> 
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
         <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
         <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
-	// -->
   </head>
   <body>
     <div data-role="page" data-theme="b" id="one">
@@ -36,9 +30,31 @@
 	<script src="js/vendor/backbone-min.js"></script>
 	<script src="js/vendor/json2.js"></script>
 	<script src="js/vendor/chance.min.js"></script>
+
 	<script type="text/template" id="tpl-contact-details">
-    		<div class="form-left-col"><h3>Contact Content</h3></div>
+    		<div class="form-left-col"> 
+			<h1>Contact Info</h1>
+			<form>
+				<a href="#" id="mainPage3" data-role="button" data-icon="home" class="ui-btn-right">Home</a>
+			</form>
+		</div>
+		<span id="contactText"><p>If you have any questions, comments, or concerns about this application feel free to email us at <br><br><a href="mailto:shs@sccwrp.org">shs@sccwrp.org</a></p>
+		 <fieldset>
+		   <form>
+			<a href="#" id="submit_data" data-theme="b" data-role="button" class="topcoat-button">Submit Local Data</a>
+			<a href="#" id="submit_log" data-theme="b" data-role="button" class="topcoat-button">Diagnostic Log</a>
+			<a href="#" id="sd_write" data-theme="b" data-role="button" class="topcoat-button">Write to SD</a>
+			<a href="#" id="field_check" data-theme="b" data-role="button" class="topcoat-button">Field Computer Check</a>
+		   </form>
+ 		 </fieldset>
+		<div id="diagnostic">
+			<textarea id="diagnostic_log" style="color: black; background-color: white; height: 600px;"></textarea>
+			<a href="#" id="delete_log" data-theme="b" data-role="button" class="topcoat-button" disabled>Delete All Data</a>
+		</div>
+		</span>
+	
 	</script>
+
     	<script type="text/template" id="tpl-intro-details">
 	  <div id="landing" data-theme="b">
 	    <ul id="landList" data-role="listview">
@@ -70,10 +86,23 @@
           </div>
 	</div>
 	</script>
+
 	<script type="text/template" id="tpl-faq-details">
-    		<div class="form-left-col"><h3>FAQ Content</h3></div>
+
+	<div class="form-left-col">
+	<div data-role="content">
+	<div data-role="collapsible-set">
+		<% _.each(FAquestions, function(question) { %> 
+		<div data-role="collapsible" data-collapsed="true">
+		<h3> <%= question.title %> </h3>
+		<p> <%= question.content %> </p>
+		</div>
+		<% }); %>  
+	</div>
+	</div>
 	</script>
-	<script type="text/template" id="tpl-footer-details">
+
+		<script type="text/template" id="tpl-footer-details">
 	 <div id="progBars" class="boxed">
 	   <form>
  	    <fieldset id="footButtons" class="ui-grid-b">

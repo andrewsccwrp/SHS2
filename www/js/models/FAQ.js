@@ -1,1 +1,1 @@
-var FAQ = Backbone.Model.extend({});
+var FAQ = Backbone.Model.extend();
